@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import apiConfig from '../../config/apiConfig';
 
-function RecipeFinderForm({ onSearch }) {
+function RecipeFinderForm() {
   const [ingredients, setIngredients] = useState('');
 
   const handleIngredientChange = (e) => {
     setIngredients(e.target.value);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSearch(ingredients);
+
+    try {
+      const { data } = await axios.get(
+        `https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`,
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
