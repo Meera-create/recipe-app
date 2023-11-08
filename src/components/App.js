@@ -4,14 +4,15 @@ import { AuthContext } from '../Context/AuthContext';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './HomePage.js';
-import '../styles/Homepage.css';
+import NavBar from './NavBar.js';
+import '../styles/HomePage.css';
 
 function App() {
   return (
     <div className="app">
       <AuthContext>
+        <NavBar />
         <Routes>
-          {/* <Navbar/> */}
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm />} />
         </Routes>

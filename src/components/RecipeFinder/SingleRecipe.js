@@ -1,5 +1,5 @@
 import React from 'react';
-import 'singleRecipe.css'
+import 'SingleRecipe.css'
 
 const SingleRecipe = () => {
 
