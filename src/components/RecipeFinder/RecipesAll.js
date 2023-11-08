@@ -1,6 +1,7 @@
-import React , { useState } from 'react'
+import React , { useState , useEffect} from 'react'
 import axios from 'axios';
 import Alert from './Alert.js'
+import SingleRecipe from './SingleRecipe.js';
 
 
 
@@ -11,15 +12,17 @@ const RecipeAll = () => {
     const [recipes, setRecipes] = useState([]);
     const [alert, setAlert] = useState("message")
 
-    axios.get(`https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`)
-        .then(({ data }) => {
-        setRecipes(data)
-        })
-        .catch((error) => {
-        setAlert({message:"Please try different ingredients"})
-    })
 
-     
+    useEffect(() => {
+        axios.get(`https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`)
+            .then(({ data }) => {
+                setRecipes(data)
+            })
+            .catch((error) => {
+                setAlert({ message: "Please try different ingredients" })
+            })
+
+    }, []);
 
 
 
@@ -33,7 +36,9 @@ const RecipeAll = () => {
 
         <ul className="recipes">
         {recipes.map((recipe, index) => (
-          <li className="eachRecipe" key={index}>{recipe.name}</li>
+            <li className="eachRecipe" key={index}>
+                <SingleRecipe />
+          </li>
         ))}
             </ul>
             
