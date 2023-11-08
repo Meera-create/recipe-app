@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logout from "./Logout";
 import { Context } from "../Context/AuthContext";
 import {FaPoop} from "react-icons/fa"
@@ -9,11 +9,11 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      <FaPoop />
+      <Link to="/recipe-form"><FaPoop /></Link>
       {user && (
         <ul>
           <li>
-            <NavLink link="/">My Account</NavLink>
+            <NavLink to="my-account">My Account</NavLink>
           </li>
           <li>
             <Logout />
