@@ -25,3 +25,5 @@ yarn-error.log*
 firebaseConfig.js
 
 apiConfig.js
+
+node_modules

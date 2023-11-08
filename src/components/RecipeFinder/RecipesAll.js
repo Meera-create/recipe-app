@@ -1,6 +1,7 @@
 import React , { useState } from 'react'
 import axios from 'axios';
 import Alert from './Alert.js'
+import SingleRecipe from './SingleRecipe.js';
 
 
 
@@ -33,7 +34,9 @@ const RecipeAll = () => {
 
         <ul className="recipes">
         {recipes.map((recipe, index) => (
-          <li className="eachRecipe" key={index}>{recipe.name}</li>
+            <li className="eachRecipe" key={index}>
+                <SingleRecipe />
+          </li>
         ))}
             </ul>
             
