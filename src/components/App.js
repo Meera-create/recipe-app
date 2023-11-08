@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
+import { Routes, Route } from 'react-router-dom';
+import Homepage from './HomePage.js';
+import '../styles/Homepage.css';
 
 function App() {
-  const [ingredientList, setIngredientList] = useState([]);
-  const [recipes, setRecipes] = useState([]);
+  
 
   return (
-    <div>
-      <h1>Recipe Finder</h1>
-      <RecipeFinderForm  />
-      <ul>
-        {recipes.map((recipe, index) => (
-          <li key={index}>{recipe.name}</li>
-        ))}
-      </ul>
+    <div className="app">
+      
+      <Routes>
+        {/* <Navbar/> */}
+        <Route path="/" element={<Homepage />} />
+        <Route path="/recipe-form" element={<RecipeFinderForm />} />
+      </Routes>
+
+  
     </div>
   );
 }
