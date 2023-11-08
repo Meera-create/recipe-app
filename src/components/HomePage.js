@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Homepage.css'
+import '../styles/HomePage.css'
 import CreateAccount from './CreateAccount';
 import GuestLogin from './GuestLogin';
 

@@ -20,7 +20,7 @@ const Login = () => {
       .then((userCredential) => {
         const { user } = userCredential;
         console.log("User Logged In");
-        navigate("/");
+        navigate("/recipe-form");
       })
       .catch((error) => {
         console.log(error);

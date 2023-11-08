@@ -11,7 +11,7 @@ const Logout = () => {
     signOut(auth)
       .then(() => {
         console.log("User signed out");
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
