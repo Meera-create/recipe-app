@@ -7,6 +7,8 @@ import Homepage from './HomePage.js';
 import NavBar from './NavBar.js';
 import '../styles/HomePage.css';
 import MyAccount from './MyAccount.js';
+import RecipesAll from './RecipeFinder/RecipesAll';
+import SingleRecipe from './RecipeFinder/SingleRecipe';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/recipe-list" element={<RecipesAll />} />
+          <Route path="/single-recipe" element={<SingleRecipe />} />
+          
         </Routes>
       </AuthContext>
     </div>
