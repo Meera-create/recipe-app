@@ -14,11 +14,6 @@ function App() {
           {/* <Navbar/> */}
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm />} />
-          <ul>
-            {recipes.map((recipe, index) => (
-              <li key={index}>{recipe.name}</li>
-            ))}
-          </ul>
         </Routes>
       </AuthContext>
     </div>
