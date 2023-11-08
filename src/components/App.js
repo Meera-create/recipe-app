@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/App.css';
 import { AuthContext } from '../Context/AuthContext';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
