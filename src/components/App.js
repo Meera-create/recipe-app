@@ -14,6 +14,7 @@ function App() {
       <AuthContext>
         <NavBar />
         <Routes>
+          
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm />} />
           <Route path="/my-account" element={<MyAccount />} />
