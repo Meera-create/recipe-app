@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"
 import { auth } from "../config/firebase";
+import Alert from "./RecipeFinder/Alert";
 
 const Login = () => {
   const initialState = {
@@ -9,21 +10,35 @@ const Login = () => {
       email: "",
       password: "",
     },
+    alert: {
+      message: "",
+      isSuccess: false,
+    },
   };
 
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState(initialState.alert);
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
+    setAlert({ message: "", isSuccess: false });
     signInWithEmailAndPassword(auth, fields.email, fields.password)
       .then((userCredential) => {
-        const { user } = userCredential;
+        // const { user } = userCredential;
+        setAlert({
+          message: "You have logged in successfully!",
+          isSuccess: true,
+        });
         console.log("User Logged In");
         navigate("/recipe-form");
       })
       .catch((error) => {
         console.log(error);
+        setAlert({
+          message: error.message,
+          isSuccess: false,
+        });
       });
   };
 
@@ -34,6 +49,7 @@ const Login = () => {
 
   return (
     <div className="login">
+      <Alert message={alert.message} success={alert.isSuccess} />
       <form className="login-form" onSubmit={handleLogin}>
       <label htmlFor="email">
           Email: <br /><br />
