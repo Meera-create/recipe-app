@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../styles/App.css';
+import { AuthContext } from '../Context/AuthContext';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
 
 function App() {
@@ -6,15 +8,17 @@ function App() {
   const [recipes, setRecipes] = useState([]);
 
   return (
-    <div>
-      <h1>Recipe Finder</h1>
-      <RecipeFinderForm  />
-      <ul>
-        {recipes.map((recipe, index) => (
-          <li key={index}>{recipe.name}</li>
-        ))}
-      </ul>
-    </div>
+      <AuthContext>
+        <div className="App">
+          <h1>Recipe Finder</h1>
+          <RecipeFinderForm  />
+            <ul>
+              {recipes.map((recipe, index) => (
+                <li key={index}>{recipe.name}</li>
+              ))}
+            </ul>
+        </div>
+      </AuthContext>
   );
 }
 
