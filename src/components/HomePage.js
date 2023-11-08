@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Homepage.css'
 import CreateAccount from './CreateAccount';
 import GuestLogin from './GuestLogin';
+import Login from './Login';
 
 const Homepage = () => {
 
 
-
+    const [guestLogin, setGuestLogin] = useState(false)
+    
+    const guestLoginHandler = () => {
+        setGuestLogin(true)
+    }
 
     return(
         <div>
@@ -14,7 +19,8 @@ const Homepage = () => {
             <h3>Login in or Sign is as Guest to Find your recipes</h3>
            
             < CreateAccount />
-            <GuestLogin />
+            <GuestLogin onChange={guestLoginHandler} {...guestLogin && <Homepage />} />
+            <Login />
          
 
 

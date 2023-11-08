@@ -32,20 +32,20 @@ const CreateAccount = () => {
   return (
     <div>
       <form onSubmit={handleSignUp}>
-        <label htmlFor="email">
+        <label htmlFor="email2">
           Email: <br /><br />
           <input 
-            id="email" 
-            name="email" 
+            id="email2" 
+            name="email2" 
             value={fields.email} 
             onChange={handleFieldChange} 
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password2">
           Password: <br /><br />
           <input
-            id="password"
-            name="password"
+            id="password2"
+            name="password2"
             type="password"
             values={fields.password}
             onChange={handleFieldChange} 

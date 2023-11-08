@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/App.css';
 import { AuthContext } from '../Context/AuthContext';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <AuthContext>
         <Routes>
-          {/* <Navbar/> */}
+          
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm />} />
         </Routes>
