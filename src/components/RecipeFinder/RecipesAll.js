@@ -2,6 +2,7 @@ import React , { useState , useEffect} from 'react'
 import axios from 'axios';
 import Alert from './Alert.js'
 import SingleRecipe from './SingleRecipe.js';
+import apiConfig from '../../config/apiConfig.js';
 
 
 
@@ -11,6 +12,12 @@ const RecipeAll = () => {
    
     const [recipes, setRecipes] = useState([]);
     const [alert, setAlert] = useState("message")
+    const [ingredients, setIngredients] = useState([]);
+    
+      const handleIngredients = (e) => {
+    setIngredients(e.target.value);
+  }
+
 
 
     useEffect(() => {

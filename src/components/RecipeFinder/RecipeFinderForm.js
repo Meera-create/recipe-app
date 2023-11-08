@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
+import {useNavigate} from 'react-router-dom'
 
 function RecipeFinderForm() {
+
+  const navigate = useNavigate();
+
   const [ingredients, setIngredients] = useState([]);
 
   const handleIngredientChange = (e) => {
@@ -36,7 +40,7 @@ function RecipeFinderForm() {
         onChange={handleIngredientChange}
         />
         </div>
-      <button type="submit">Search</button>
+      <button type="submit" onClick={()=>navigate('/recipe-list')}>Search</button>
       </form>
       </div>
   );
