@@ -1,27 +1,25 @@
-import React, {useState} from 'react'
-import Homepage from './HomePage';
-import RecipeFinderForm from './RecipeFinder/RecipeFinderForm';
+import React from 'react'
+// import RecipeFinderForm from './RecipeFinder/RecipeFinderForm'
+import {useNavigate} from 'react-router-dom'
+
 
 
 
 const GuestLogin = () => {
 
-
-    const [guestLogin, setGuestLogin] = useState(false)
     
-    const guestLogHandler = () => {
-        setGuestLogin(true)
-        guestLogin?<RecipeFinderForm />:<Homepage />
-        }
+    // const [guestButton, setGuestButton] = useState(false)
+    const navigate = useNavigate();
+   
+   
 
-
-
+ 
 
     return (
         <div>
 
             <button value="button" type="button"
-                onClick={guestLogHandler}>           
+                onClick={()=>navigate('/recipe-form')}>           
             
                             
                 Login As Guest

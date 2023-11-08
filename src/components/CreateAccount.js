@@ -20,8 +20,13 @@ const CreateAccount = () => {
       .then((userCredential) => {
         const { user } = userCredential;
         console.log("Account Created");
+        setFields(initialState.fields);
+        navigate("/recipe-form");
+      })
+      .catch((error) => {
+        console.log(error);
+        setFields(initialState.fields);
       });
-      navigate("/");
   }
   
   const handleFieldChange = (event) => {
