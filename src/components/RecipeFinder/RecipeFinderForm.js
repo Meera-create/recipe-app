@@ -3,7 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 
 function RecipeFinderForm() {
-  const [ingredients, setIngredients] = useState('');
+  const [ingredients, setIngredients] = useState([]);
 
   const handleIngredientChange = (e) => {
     setIngredients(e.target.value);
@@ -23,15 +23,22 @@ function RecipeFinderForm() {
   }
 
   return (
+    
+    <div className="form"> 
+      <h1>Search for a recipe...</h1>
     <form onSubmit={handleSubmit}>
+      <div className="search-box">
+      <label>Type Ingredients to Search</label>
       <input
         type="text"
         placeholder="Add ingredients"
         value={ingredients}
         onChange={handleIngredientChange}
-      />
+        />
+        </div>
       <button type="submit">Search</button>
-    </form>
+      </form>
+      </div>
   );
 }
 
