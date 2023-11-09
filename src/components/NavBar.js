@@ -9,7 +9,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/recipe-form"><FaPoop /></Link>
+      <Link reloadDocument to="/recipe-form"><FaPoop /></Link>
       {user && (
         <ul>
           <li>
