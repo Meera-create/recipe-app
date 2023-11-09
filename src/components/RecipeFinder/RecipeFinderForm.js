@@ -1,31 +1,21 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const RecipeFinderForm =({ handleSubmit}) => {
+
+const RecipeFinderForm = ({ handleSubmit}) => {
 
   const navigate = useNavigate();
 
-
-
-
   const [ingredients, setIngredients] = useState([]);
+
+   
 
   const handleIngredientChange = (e) => {
     setIngredients(e.target.value);
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
 
-  //   try {
-  //     const { data } = await axios.get(
-  //       `https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`,
-  //     );
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+    
 
   return (
     
@@ -41,7 +31,7 @@ const RecipeFinderForm =({ handleSubmit}) => {
         onChange={handleIngredientChange}
         />
         </div>
-        <button type="submit" onClick={()=>navigate('/recipe-list')}>Search</button>
+        <button type="button" onClick={()=>navigate('/recipe-list')}>Search</button>
         
       </form>
       </div>
