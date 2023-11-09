@@ -9,10 +9,10 @@ const RecipeAll = ({ recipes, search }) => {
           {alert && <Alert message={alert.message} />}
 
           <ul className="recipes">
-            {recipes.map((recipe, index) => (
-              <li className="eachRecipe" key={index}>
+            {recipes.map((recipe) => (
+              <li className="eachRecipe" key={recipe.id}>
                 {/* <SingleRecipe /> */}
-                {recipe.recipe.label}
+                {recipe.title}
               </li>
             ))}
           </ul>
