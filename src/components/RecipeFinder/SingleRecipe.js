@@ -1,11 +1,13 @@
 import React from 'react';
 
 
-const SingleRecipe = () => {
+const SingleRecipe = ({allData}) => {
 
+  
 
     return (
         <div>
+            <h1>"hello"</h1>
 
         </div>
     )

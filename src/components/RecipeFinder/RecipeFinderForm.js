@@ -6,9 +6,14 @@ import RecipesAll from './RecipesAll';
 
 function RecipeFinderForm({ recipes, setRecipes }) {
 
+const RecipeFinderForm = ({ handleSubmit}) => {
+
+
   const navigate = useNavigate();
 
   const [ingredients, setIngredients] = useState([]);
+
+   
 
   const handleIngredientChange = (e) => {
     setIngredients(e.target.value);
@@ -29,7 +34,6 @@ function RecipeFinderForm({ recipes, setRecipes }) {
   }
 
   return (
-    
     <div className="form"> 
       <h1>Search for a recipe...</h1>
     <form onSubmit={handleSubmit}>
@@ -42,9 +46,7 @@ function RecipeFinderForm({ recipes, setRecipes }) {
         onChange={handleIngredientChange}
         />
         </div>
-      <button type="submit" 
-      // onClick={()=>navigate('/recipe-list')}
-      >Search</button>
+      <button type="submit">Search</button>
       </form>
       <RecipesAll recipes={recipes} />
       </div>

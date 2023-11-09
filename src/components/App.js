@@ -9,6 +9,8 @@ import '../styles/HomePage.css';
 import MyAccount from './MyAccount.js';
 import RecipesAll from './RecipeFinder/RecipesAll';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
+import axios from 'axios'
+import apiConfig from '../config/apiConfig';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -18,17 +20,15 @@ function App() {
       <AuthContext>
         <NavBar />
         <Routes>
-          
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeFinderForm recipes={recipes} setRecipes={setRecipes} />} />
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/recipe-list" element={<RecipesAll recipes={recipes} />} />
-          <Route path="/single-recipe" element={<SingleRecipe />} />
-          
-        </Routes>
-      </AuthContext>
-    </div>
-  );
-}
+          <Route path="/single-recipe" element={<SingleRecipe />} /> 
+         </Routes>
+        </AuthContext>
+      </div>
+    );
+  }
 
-export default App;
+export default App
