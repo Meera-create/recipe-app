@@ -7,29 +7,29 @@ import apiConfig from '../../config/apiConfig.js';
 
 
 
-const RecipeAll = () => {
+const RecipeAll = ({ recipes }) => {
 
    
-    const [recipes, setRecipes] = useState([]);
-    const [alert, setAlert] = useState("message")
-    const [ingredients, setIngredients] = useState([]);
+    // const [recipes, setRecipes] = useState([]);
+    // const [alert, setAlert] = useState("message")
+    // const [ingredients, setIngredients] = useState([]);
     
-      const handleIngredients = (e) => {
-    setIngredients(e.target.value);
-  }
+//       const handleIngredients = (e) => {
+//     setIngredients(e.target.value);
+//   }
 
 
 
-    useEffect(() => {
-        axios.get(`https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`)
-            .then(({ data }) => {
-                setRecipes(data)
-            })
-            .catch((error) => {
-                setAlert({ message: "Please try different ingredients" })
-            })
+    // useEffect(() => {
+    //     axios.get(`https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`)
+    //         .then(({ data }) => {
+    //             setRecipes(data)
+    //         })
+    //         .catch((error) => {
+    //             setAlert({ message: "Please try different ingredients" })
+    //         })
 
-    }, []);
+    // }, []);
 
 
 
@@ -44,7 +44,8 @@ const RecipeAll = () => {
         <ul className="recipes">
         {recipes.map((recipe, index) => (
             <li className="eachRecipe" key={index}>
-                <SingleRecipe />
+                {/* <SingleRecipe /> */}
+                {recipe.recipe.label}
           </li>
         ))}
             </ul>

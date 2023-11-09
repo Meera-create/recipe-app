@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import RecipesAll from './RecipesAll';
 
-function RecipeFinderForm() {
+function RecipeFinderForm({ recipes, setRecipes }) {
 
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ function RecipeFinderForm() {
         `https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`,
       );
       console.log(data);
+      setRecipes(data.hits);
     } catch (error) {
       console.log(error);
     }
@@ -40,8 +42,11 @@ function RecipeFinderForm() {
         onChange={handleIngredientChange}
         />
         </div>
-      <button type="submit" onClick={()=>navigate('/recipe-list')}>Search</button>
+      <button type="submit" 
+      // onClick={()=>navigate('/recipe-list')}
+      >Search</button>
       </form>
+      <RecipesAll recipes={recipes} />
       </div>
   );
 }

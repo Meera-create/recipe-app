@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/App.css';
 import { AuthContext } from '../Context/AuthContext';
 import RecipeFinderForm from './RecipeFinder/RecipeFinderForm.js';
@@ -11,6 +11,8 @@ import RecipesAll from './RecipeFinder/RecipesAll';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
   return (
     <div className="app">
       <AuthContext>
@@ -18,9 +20,9 @@ function App() {
         <Routes>
           
           <Route path="/" element={<Homepage />} />
-          <Route path="/recipe-form" element={<RecipeFinderForm />} />
+          <Route path="/recipe-form" element={<RecipeFinderForm recipes={recipes} setRecipes={setRecipes} />} />
           <Route path="/my-account" element={<MyAccount />} />
-          <Route path="/recipe-list" element={<RecipesAll />} />
+          <Route path="/recipe-list" element={<RecipesAll recipes={recipes} />} />
           <Route path="/single-recipe" element={<SingleRecipe />} />
           
         </Routes>
