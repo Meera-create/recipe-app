@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import Alert from './Alert';
+import IngredientsList from './IngredientsList';
 // import {useNavigate} from 'react-router-dom';
 
 const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, setIngredientsList }) => {
@@ -74,6 +75,7 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} /> <br /><br /></>}
         {alert && <Alert message={alert.message} />}
         <button type="button" onClick={handleSubmit}>Search</button>
       </form>

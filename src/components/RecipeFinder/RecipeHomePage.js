@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RecipeFinderForm from './RecipeFinderForm';
 import RecipeAll from './RecipesAll';
+import IngredientsList from './IngredientsList';
 
 const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);
