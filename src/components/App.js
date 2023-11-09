@@ -9,10 +9,8 @@ import '../styles/HomePage.css';
 import MyAccount from './MyAccount.js';
 import RecipesAll from './RecipeFinder/RecipesAll';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
-import axios from 'axios'
-import apiConfig from '../config/apiConfig';
 
-function App() {
+const App = () => {
   const [recipes, setRecipes] = useState([]);
 
   return (

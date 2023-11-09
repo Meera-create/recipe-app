@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
 import RecipesAll from './RecipesAll';
 
-function RecipeFinderForm({ recipes, setRecipes }) {
+const RecipeFinderForm = ({ recipes, setRecipes }) => {
 
-const RecipeFinderForm = ({ handleSubmit}) => {
-
-
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [ingredients, setIngredients] = useState([]);
-
-   
 
   const handleIngredientChange = (e) => {
     setIngredients(e.target.value);
@@ -34,6 +29,7 @@ const RecipeFinderForm = ({ handleSubmit}) => {
   }
 
   return (
+    
     <div className="form"> 
       <h1>Search for a recipe...</h1>
     <form onSubmit={handleSubmit}>
