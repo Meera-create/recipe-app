@@ -26,10 +26,14 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch }) => {
     if (ingredients.length > 0) {
       try {
         const { data } = await axios.get(
-          `https://api.edamam.com/search?app_id=${apiConfig.app_id}&app_key=${apiConfig.app_key}&q=${ingredients}`,
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}`, {
+            headers: {
+              "x-api-key": apiConfig.apiKey,
+            },
+          }
         );
         console.log(data);
-        setRecipes(data.hits);
+        setRecipes(data);
         setSearch(true);
         setAlert(initialState.alert);
       } catch (error) {
