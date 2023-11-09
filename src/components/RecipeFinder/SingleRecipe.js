@@ -1,15 +1,15 @@
-import React from 'react';
+// import React from 'react';
 
 
-const SingleRecipe = () => {
+// const SingleRecipe = () => {
 
 
-    return (
-        <div>
+//     return (
+//         <div>
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
 
-export default SingleRecipe;
+// export default SingleRecipe;
