@@ -75,7 +75,7 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
-        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} /> <br /><br /></>}
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
         {alert && <Alert message={alert.message} />}
         <button type="button" onClick={handleSubmit}>Search</button>
       </form>
