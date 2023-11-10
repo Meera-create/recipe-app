@@ -10,6 +10,7 @@
     "firebase": "^10.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
@@ -45,12 +46,12 @@
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "3.0.3"
   },
-
   "jest": {
     "transform": {
-        "^.+\\.[t|j]sx?$": "babel-jest"
+      "^.+\\.[t|j]sx?$": "babel-jest"
     },
-    "transformIgnorePatterns": ["<rootDir>/node_modules/(?!axios)/"]
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!axios)/"
+    ]
   }
- 
 }
