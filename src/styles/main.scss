@@ -1,0 +1,34 @@
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
+
+// Vendors would be imported here if we use any
+
+@import 'base/base';
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'layout/forms';
+
+@import 'components/alert';
+@import 'components/create-account';
+@import 'components/guest-login';
+@import 'components/ingredient';
+@import 'components/ingredients-list';
+@import 'components/login';
+@import 'components/logout';
+@import 'components/nav-bar';
+@import 'components/recipe-finder-form';
+@import 'components/recipes-all';
+@import 'components/single-recipe';
+
+@import 'pages/home-page';
+@import 'pages/my-account';
+@import 'pages/recipe-home-page';
+
+@import 'themes/theme';
