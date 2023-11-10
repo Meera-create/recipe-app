@@ -12,8 +12,7 @@ const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
 
   return (<div>
   {ingredientsList.map((ingredient, index) => {
-    console.log(index);
-    return <Ingredient ingredientName={ingredient} key={index} ingredientIndex={index} removeIngredient={handleRemoveIngredient} />
+    return <Ingredient ingredientName={ingredient} key={index} removeIngredient={handleRemoveIngredient} />
   })}
   </div>
   );

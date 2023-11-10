@@ -26,10 +26,10 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
-    console.log(ingredient);
     if (ingredient.length > 0) {
       setIngredientsList([...ingredientsList, ingredient]);
       setIngredient(initialState.ingredient);
+      setAlert(initialState.alert);
     } else {
       setAlert({ message: "Please enter an ingredient", isSuccess: false });
     }
@@ -39,14 +39,14 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
     e.preventDefault();
     if (ingredientsList.length > 0) {
       try {
+        const ingredientsSearch = ingredientsList.join(",+");
         const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsList}`, {
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`, {
             headers: {
               "x-api-key": apiConfig.apiKey,
             },
           }
         );
-        console.log(data);
         setRecipes(data);
         setSearch(true);
         setAlert(initialState.alert);
@@ -54,7 +54,6 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
         console.log(error);
       }
     } else {
-      console.log("Please enter an ingredient");
       setAlert2({ message: "Please enter an ingredient", isSuccess: false });
     }
   }

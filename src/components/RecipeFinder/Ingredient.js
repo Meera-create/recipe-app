@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Ingredient = ({ ingredientName, removeIngredient, ingredientIndex }) => {
+const Ingredient = ({ ingredientName, removeIngredient }) => {
 
   return (
-    <p>{ingredientName} <span className='ingredient-remove' style={{color:"red"}} onClick={removeIngredient} ingredientindex={ingredientIndex}>x</span></p>
+    <p>{ingredientName} <button className='ingredient-remove' style={{color:"red"}} onClick={removeIngredient} type="button">x</button></p>
   )
 }
 
