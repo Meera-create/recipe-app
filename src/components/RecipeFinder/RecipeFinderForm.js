@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import Alert from './Alert';
-// import {useNavigate} from 'react-router-dom';
 
-const RecipeFinderForm = ({ recipes, setRecipes, setSearch }) => {
 
-  // const navigate = useNavigate();
+const RecipeFinderForm = ({ setRecipes, setSearch, setRecipeID, recipeID}) => {
+
+ 
   const initialState = {
     alert: {
       message: "",
@@ -32,8 +32,12 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch }) => {
             },
           }
         );
+      
+        
         console.log(data);
         setRecipes(data);
+        console.log(data.map((each) => each.id),'each ID of data');
+        setRecipeID(data.map((each) => each.id));
         setSearch(true);
         setAlert(initialState.alert);
       } catch (error) {
