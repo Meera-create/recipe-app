@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { auth } from "../config/firebase";
 import Alert from "./RecipeFinder/Alert";
 
@@ -71,9 +71,6 @@ const Login = () => {
           />
         </label>
         <button type="submit">Login</button>
-        <p>
-          Need an account? Sign up <Link to="../sign-up">here</Link>
-        </p>
       </form>
     </div>
   );

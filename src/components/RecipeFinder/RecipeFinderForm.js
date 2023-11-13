@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import Alert from './Alert';
+// import Alert from './Alert';
+import IngredientsList from './IngredientsList';
+import toast, { Toaster } from 'react-hot-toast';
+// import {useNavigate} from 'react-router-dom';
+
+const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, setIngredientsList, setRecipeID  }) => {
 
 
 const RecipeFinderForm = ({ setRecipes, setSearch, setRecipeID, recipeID}) => {
@@ -12,60 +18,85 @@ const RecipeFinderForm = ({ setRecipes, setSearch, setRecipeID, recipeID}) => {
       message: "",
       isSuccess: false,
     },
+    ingredient: "",
   }
 
-  const [ingredients, setIngredients] = useState([]);
-  const [alert, setAlert] = useState(initialState.alert)
+  const [ingredient, setIngredient] = useState(initialState.ingredient);
+  // const [alert, setAlert] = useState(initialState.alert);
+  // const [alert2, setAlert2] = useState(initialState.alert);
 
   const handleIngredientChange = (e) => {
-    setIngredients(e.target.value);
+    setIngredient(e.target.value);
   }
+
+  const handleAddIngredient = (e) => {
+    e.preventDefault();
+    if (ingredient.length > 0) {
+      setIngredientsList([...ingredientsList, ingredient]);
+      setIngredient(initialState.ingredient);
+      // setAlert(initialState.alert);
+      toast.success("Ingredient added!");
+    } else {
+      // setAlert({ message: "Please enter an ingredient", isSuccess: false });
+      toast.error("Please enter an ingredient");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (ingredients.length > 0) {
+    if (ingredientsList.length > 0) {
       try {
+        const ingredientsSearch = ingredientsList.join(",+");
         const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}`, {
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`, {
             headers: {
               "x-api-key": apiConfig.apiKey,
             },
           }
         );
+
       
         
         console.log(data);
+
         setRecipes(data);
         console.log(data.map((each) => each.id),'each ID of data');
         setRecipeID(data.map((each) => each.id));
         setSearch(true);
-        setAlert(initialState.alert);
+        // setAlert(initialState.alert);
+        toast.success("Recipes found!");
       } catch (error) {
         console.log(error);
+        toast.error("No recipes found :(");
       }
     } else {
-      console.log("Please enter an ingredient");
-      setAlert({ message: "Please enter an ingredient", isSuccess: false });
+      toast.error("Please add an ingredient");
+      // setAlert2({ message: "Please add an ingredient", isSuccess: false });
     }
   }
 
   return (
     
-    <div className="form"> 
+    <div className="form">
+      <Toaster />
       <h1>Search for a recipe...</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="search-box">
           <label>Type Ingredients to Search</label>
           <input
           type="text"
           placeholder="Add ingredients"
-          value={ingredients}
+          value={ingredient}
           onChange={handleIngredientChange}
           />
         </div>
-        <button type="submit">Search</button>
+        <button type="submit" onClick={handleAddIngredient}>Add</button>
+        <br /><br />
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
+        {/* {alert && <Alert message={alert.message} />} */}
+        <button type="button" onClick={handleSubmit}>Search</button>
       </form>
-      {alert && <Alert message={alert.message} />}
+      {/* {alert2 && <Alert message={alert2.message} />} */}
     </div>
   );
 }

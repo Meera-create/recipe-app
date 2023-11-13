@@ -6,11 +6,13 @@ import SingleRecipe from './SingleRecipe';
 const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(false);
+
   const [recipeID, setRecipeID] = useState([]);
   const [singleRecipe, setSingleRecipe] = useState([]);
   const [index, setIndex] = useState();
   const [url, setURL] = useState();
   const [extractedRecipe, setExtractedRecipe] = useState([]);
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   return (
     <div className='recipe-homepage'>
@@ -21,6 +23,21 @@ const RecipeHomePage = () => {
         url={url} setURL={setURL} extractedRecipe={extractedRecipe}  setExtractedRecipe={setExtractedRecipe}
       />
         
+
+  const [ingredientsList, setIngredientsList] = useState([]);
+
+  return (
+    <div className='recipe-homepage'>
+      <RecipeFinderForm 
+        recipes={recipes} 
+        setRecipes={setRecipes} 
+        setSearch={setSearch}
+        setRecipeID={setRecipeID}
+        ingredientsList={ingredientsList} 
+        setIngredientsList={setIngredientsList}
+      />
+      {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search}/>}
+
     </div>
   )
 }
