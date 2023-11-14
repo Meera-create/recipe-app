@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
-import Alert from './Alert';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 
-const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, setIngredientsList, setRecipeID }) => {
+const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
+ 
   const initialState = {
     alert: {
       message: "",
@@ -45,11 +45,13 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
         );
 
         setRecipes(data);
-        setRecipeID(data.map((each) => each.id));
+        setSearch(true);
+        setExtractedRecipe({});
         setSearch(true);
         toast.success("Recipes found!");
       } catch (error) {
         console.log(error);
+        setExtractedRecipe({});
         toast.error("No recipes found :(");
       }
     } else {
@@ -71,20 +73,10 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
             onChange={handleIngredientChange}
           />
         </div>
-        <button type="submit" onClick={handleAddIngredient}>
-          Add
-        </button>
-        <br />
-        <br />
-        {ingredientsList.length >= 1 && (
-          <>
-            <IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /> <br />
-            <br />
-          </>
-        )}
-        <button type="button" onClick={handleSubmit}>
-          Search
-        </button>
+        <button type="submit" onClick={handleAddIngredient}>Add</button>
+        <br /><br />
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
+        <button type="button" onClick={handleSubmit}>Search</button>
       </form>
     </div>
   );
