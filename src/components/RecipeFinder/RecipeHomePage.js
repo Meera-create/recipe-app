@@ -21,7 +21,7 @@ const RecipeHomePage = () => {
         {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}/>}
       {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} />}
     </div>
-  )
+  );
 }
 
 export default RecipeHomePage;

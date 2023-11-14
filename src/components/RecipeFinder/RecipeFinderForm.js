@@ -3,7 +3,6 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
-// import {useNavigate} from 'react-router-dom';
 
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
  
@@ -13,13 +12,13 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
       isSuccess: false,
     },
     ingredient: "",
-  }
+  };
 
   const [ingredient, setIngredient] = useState(initialState.ingredient);
 
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
-  }
+  };
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
@@ -44,11 +43,11 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             },
           }
         );
-        console.log(data);
 
         setRecipes(data);
         setSearch(true);
         setExtractedRecipe({});
+        setSearch(true);
         toast.success("Recipes found!");
       } catch (error) {
         console.log(error);
@@ -58,10 +57,9 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     } else {
       toast.error("Please add an ingredient");
     }
-  }
+  };
 
   return (
-    
     <div className="form">
       <Toaster />
       <h1>Search for a recipe...</h1>
@@ -69,10 +67,10 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
         <div className="search-box">
           <label>Type Ingredients to Search</label>
           <input
-          type="text"
-          placeholder="Add ingredients"
-          value={ingredient}
-          onChange={handleIngredientChange}
+            type="text"
+            placeholder="Add ingredients"
+            value={ingredient}
+            onChange={handleIngredientChange}
           />
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
@@ -82,6 +80,6 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
       </form>
     </div>
   );
-}
+};
 
 export default RecipeFinderForm;
