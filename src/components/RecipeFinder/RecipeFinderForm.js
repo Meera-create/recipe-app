@@ -8,10 +8,6 @@ import toast, { Toaster } from 'react-hot-toast';
 // import {useNavigate} from 'react-router-dom';
 
 const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, setIngredientsList, setRecipeID  }) => {
-
-
-const RecipeFinderForm = ({ setRecipes, setSearch, setRecipeID, recipeID}) => {
-
  
   const initialState = {
     alert: {
