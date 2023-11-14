@@ -79,7 +79,7 @@ const SingleRecipe = ({ setSingleRecipe, singleRecipe, recipeID, url, setURL , s
                 
              
                 <p>{extractedRecipe.title}</p>
-                <p>{extractedRecipe.instructions}</p>
+                {extractedRecipe.instructions}
                 <p>Time to cook {extractedRecipe.readyInMinutes}</p>
                     
 
