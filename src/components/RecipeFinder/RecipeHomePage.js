@@ -16,18 +16,6 @@ const RecipeHomePage = () => {
 
   return (
     <div className='recipe-homepage'>
-      <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} setRecipeID={setRecipeID} />
-      <RecipeAll recipes={recipes} search={search} recipeID={recipeID} setRecipeID={setRecipeID} setIndex={setIndex}  />
-      <SingleRecipe singleRecipe={singleRecipe} setSingleRecipe={setSingleRecipe}
-        recipeID={recipeID} setRecipeID={setRecipeID} index={index} setIndex={setIndex} recipes={recipes}
-        url={url} setURL={setURL} extractedRecipe={extractedRecipe}  setExtractedRecipe={setExtractedRecipe}
-      />
-        
-
-  const [ingredientsList, setIngredientsList] = useState([]);
-
-  return (
-    <div className='recipe-homepage'>
       <RecipeFinderForm 
         recipes={recipes} 
         setRecipes={setRecipes} 
@@ -36,10 +24,13 @@ const RecipeHomePage = () => {
         ingredientsList={ingredientsList} 
         setIngredientsList={setIngredientsList}
       />
-      {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search}/>}
-
+      <RecipeAll recipes={recipes} search={search} recipeID={recipeID} setRecipeID={setRecipeID} setIndex={setIndex}  />
+      <SingleRecipe singleRecipe={singleRecipe} setSingleRecipe={setSingleRecipe}
+        recipeID={recipeID} setRecipeID={setRecipeID} index={index} setIndex={setIndex} recipes={recipes}
+        url={url} setURL={setURL} extractedRecipe={extractedRecipe}  setExtractedRecipe={setExtractedRecipe}
+      />
     </div>
-  )
+  );
 }
 
-  export default RecipeHomePage;
+export default RecipeHomePage;
