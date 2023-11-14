@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
-// import Alert from './Alert';
-// import Alert from './Alert';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 // import {useNavigate} from 'react-router-dom';
 
-const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, setIngredientsList, setRecipeID  }) => {
+const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
  
   const initialState = {
     alert: {
@@ -18,8 +16,6 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
   }
 
   const [ingredient, setIngredient] = useState(initialState.ingredient);
-  // const [alert, setAlert] = useState(initialState.alert);
-  // const [alert2, setAlert2] = useState(initialState.alert);
 
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
@@ -30,10 +26,8 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
     if (ingredient.length > 0) {
       setIngredientsList([...ingredientsList, ingredient]);
       setIngredient(initialState.ingredient);
-      // setAlert(initialState.alert);
       toast.success("Ingredient added!");
     } else {
-      // setAlert({ message: "Please enter an ingredient", isSuccess: false });
       toast.error("Please enter an ingredient");
     }
   };
@@ -50,24 +44,19 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
             },
           }
         );
-
-      
-        
         console.log(data);
 
         setRecipes(data);
-        console.log(data.map((each) => each.id),'each ID of data');
-        setRecipeID(data.map((each) => each.id));
         setSearch(true);
-        // setAlert(initialState.alert);
+        setExtractedRecipe({});
         toast.success("Recipes found!");
       } catch (error) {
         console.log(error);
+        setExtractedRecipe({});
         toast.error("No recipes found :(");
       }
     } else {
       toast.error("Please add an ingredient");
-      // setAlert2({ message: "Please add an ingredient", isSuccess: false });
     }
   }
 
@@ -89,10 +78,8 @@ const RecipeFinderForm = ({ recipes, setRecipes, setSearch, ingredientsList, set
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
-        {/* {alert && <Alert message={alert.message} />} */}
         <button type="button" onClick={handleSubmit}>Search</button>
       </form>
-      {/* {alert2 && <Alert message={alert2.message} />} */}
     </div>
   );
 }

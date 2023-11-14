@@ -1,17 +1,47 @@
 import React from 'react';
-
+import axios from 'axios';
 import Alert from './Alert';
+import { useNavigate } from 'react-router-dom';
+// import SingleRecipe from './SingleRecipe';
+import apiConfig from '../../config/apiConfig';
 
-import {useNavigate} from 'react-router-dom';
-import SingleRecipe from './SingleRecipe';
 
-
-const RecipeAll = ({ recipes, search, recipeID , setIndex, setRecipeID}) => {
-
+const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
 
     const navigate = useNavigate();
 
+    const selectRecipe = async (event) => {
+        event.preventDefault();
+        const recipeId = event.target.value;
+                try {
+                    const { data } = await axios.get(
+                        `https://api.spoonacular.com/recipes/${recipeId}/information`,
+                        {
+                            headers: {
+                                "x-api-key": apiConfig.apiKey,
+                            },
+                        });
+                
+                    console.log(data, "fefehfkahe")
+                    // console.log(singleRecipe, "the recipe")
+                    console.log(data.sourceUrl, 'URL WEBSITE')
 
+                    const { data: recipeData} = await axios.get(
+                        `https://api.spoonacular.com/recipes/extract?url=${data.sourceUrl}`,
+                        {
+                            headers: {
+                                "x-api-key": apiConfig.apiKey,
+                            },
+                        });
+                    console.log(recipeData, "extracted recipe");
+                    // console.log(data.instructions)
+                    setExtractedRecipe(recipeData);
+                    // console.log(url, 'this is the URL!!!')
+                    } catch (error) {
+                    console.log(error);
+                }
+            };
+        
 
     return (
         <div className="recipesAll">
@@ -19,33 +49,17 @@ const RecipeAll = ({ recipes, search, recipeID , setIndex, setRecipeID}) => {
           {alert && <Alert message={alert.message} />}
 
           <ul className="recipes">
-                {recipes.map((recipe, index) => (
+                {recipes.map((recipe) => (
                     <button className="eachRecipe"
-                       
                         value={recipe.id}
                         key={recipe.id}
-                   
-                    
-                     
-                        onClick={(() => 
-                            setRecipeID(recipe.id) &&
-                            navigate("/single-recipe") &&
-                            <SingleRecipe />
-                        )}
-                    
+                        onClick={selectRecipe}
                     >
                         {recipe.title}
                         {/* {recipe.url} */}
                       
                         {recipe.id}
-                     
-                   
-                    
-
-                   
-                    </button>
-                
-                 
+                    </button> 
             ))}
           </ul>
         </div>
