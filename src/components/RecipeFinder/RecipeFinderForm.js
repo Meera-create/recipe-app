@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
-import Alert from './Alert';
+// import Alert from './Alert';
 // import Alert from './Alert';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
