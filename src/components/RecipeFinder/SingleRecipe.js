@@ -3,6 +3,8 @@ import { Context } from '../../Context/AuthContext';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
+import '../../styles/components/_single-recipe.scss'
+
 
 
 const SingleRecipe = ({ extractedRecipe }) => {

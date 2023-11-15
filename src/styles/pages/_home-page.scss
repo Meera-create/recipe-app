@@ -1,0 +1,13 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+body{
+    @include mixins.text-base;
+    background-color: functions.color('background');
+    
+}
+
+.welcome-page{
+    // margin-left:functions.spacing('medium')
+    margin-left:functions.spacing('xx-large');
+}

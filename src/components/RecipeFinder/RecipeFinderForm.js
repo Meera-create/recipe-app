@@ -3,6 +3,8 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
+import '../../styles/components/_recipe-finder-form.scss'
+
 
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
  

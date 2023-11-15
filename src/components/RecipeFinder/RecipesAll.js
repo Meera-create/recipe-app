@@ -1,14 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import Alert from './Alert';
-import { useNavigate } from 'react-router-dom';
-// import SingleRecipe from './SingleRecipe';
+// import { useNavigate } from 'react-router-dom';
 import apiConfig from '../../config/apiConfig';
+import '../../styles/components/_recipes-all.scss'
 
 
 const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
 
-    const navigate = useNavigate();
 
     const selectRecipe = async (event) => {
         event.preventDefault();

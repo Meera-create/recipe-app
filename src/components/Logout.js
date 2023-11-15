@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
+import '../styles/components/_logout.scss'
+
 
 const Logout = () => {
   const navigate = useNavigate();

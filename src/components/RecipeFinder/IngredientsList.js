@@ -1,6 +1,7 @@
 import React from 'react';
 import Ingredient from './Ingredient';
 import toast, { Toaster } from 'react-hot-toast';
+import '../../styles/components/_ingredients-list.scss'
 
 const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
 

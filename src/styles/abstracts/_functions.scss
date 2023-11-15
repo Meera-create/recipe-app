@@ -1,0 +1,25 @@
+@use './variables';
+
+@function color($name){
+    @return map-get(variables.$colors, $name);
+}
+
+@function font-weight($name){
+    @return map-get(variables.$font-weight, $name);
+}
+
+@function spacing($name){
+    @return map-get(variables.$spacing, $name);
+}
+
+@function max-width($name){
+    @return map-get(variables.$max-width, $name);
+}
+
+@function font-family($name){
+    @return map-get(variables.$font-family, $name);
+}
+
+@function break-points($name){
+    @return map-get(variables.$breakpoints, $name)
+}

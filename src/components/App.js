@@ -1,13 +1,13 @@
 import React from 'react';
-import '../styles/App.css';
 import { AuthContext } from '../Context/AuthContext';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './HomePage.js';
 import NavBar from './NavBar.js';
-import '../styles/HomePage.css';
 import MyAccount from './MyAccount.js';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
 import RecipeHomePage from './RecipeFinder/RecipeHomePage.js';
+
+
 
 const App = () => {
 
