@@ -3,6 +3,7 @@ import { Context } from '../../Context/AuthContext';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
+import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss'
 
 
@@ -36,13 +37,16 @@ const SingleRecipe = ({ extractedRecipe }) => {
                 // vegetarian: extractedRecipe.vegetarian,
             });
             console.log("Document written with ID: ", docRef.id);
+            toast.success("Recipe saved!")
         } catch (error) {
             console.error("Error adding document: ", error);
+            toast.error("There was a problem saving the recipe - please try again later");
         }
     };
     // console.log(recipeID, 'this is a recipe ID')
         return (
             <div className="single_recipe">
+                <Toaster />
                 <h1>Your recipe</h1>
                 <p>{extractedRecipe.title}</p>
                 {parse(`${extractedRecipe.instructions}`)}
