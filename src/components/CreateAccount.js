@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
@@ -7,6 +7,7 @@ import Alert from "./RecipeFinder/Alert";
 const CreateAccount = () => {
   const initialState = {
     fields: {
+      username: "",
       email: "",
       password: "",
     },
@@ -24,8 +25,9 @@ const CreateAccount = () => {
     event.preventDefault();
     setAlert({ message: "", isSuccess: false });
     createUserWithEmailAndPassword(auth, fields.email, fields.password)
-      .then((userCredential) => {
-        // const { user } = userCredential;
+      .then(({ user }) => {
+        console.log(user);
+        updateProfile(user, { displayName: fields.username });
         console.log("Account Created");
         setAlert({
           message: "Your account has been created",
@@ -50,25 +52,34 @@ const CreateAccount = () => {
     <div>
       <Alert message={alert.message} success={alert.isSuccess} />
       <form onSubmit={handleSignUp}>
-        <label htmlFor="email2">
+        <label htmlFor="username-signup">
+          Username: <br /><br />
+          <input 
+            id="username-signup" 
+            name="username" 
+            value={fields.username} 
+            onChange={handleFieldChange} 
+          />
+        </label> <br /><br />
+        <label htmlFor="email-signup">
           Email: <br /><br />
           <input 
-            id="email2" 
-            name="email2" 
+            id="email-signup" 
+            name="email" 
             value={fields.email} 
             onChange={handleFieldChange} 
           />
-        </label>
-        <label htmlFor="password2">
+        </label> <br /><br />
+        <label htmlFor="password-signup">
           Password: <br /><br />
           <input
-            id="password2"
-            name="password2"
+            id="password-signup"
+            name="password"
             type="password"
-            values={fields.password}
+            value={fields.password}
             onChange={handleFieldChange} 
           />
-        </label>
+        </label> <br /><br />
         <button type="submit">Sign Up</button>
       </form>
     </div>

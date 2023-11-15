@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Context } from '../Context/AuthContext';
 
 const MyAccount = () => {
+  const { user } = useContext(Context);
+  console.log(user);
   return (
-    <div>MyAccount</div>
+    <div>{`${user.displayName}'s Account`}</div>
   )
 }
 
