@@ -1,8 +1,9 @@
 import React from 'react'
-import '../styles/HomePage.css'
 import CreateAccount from './CreateAccount';
 import GuestLogin from './GuestLogin';
 import Login from './Login';
+import '../styles/pages/_home-page.scss'
+
 
 const Homepage = () => {
     return(

@@ -1,0 +1,41 @@
+$color-light-green:rgb(126, 184, 126);
+$color-mid-green:rgb(38, 151, 38);
+$color-dark-green:rgb(9, 61, 9);
+$color-black:black;
+$color-white:white;
+$color-cream:rgb(245, 244, 206);
+$color-grey:rgb(61, 54, 54);
+
+
+$colors:(
+    'background':$color-cream,
+    'foreground':$color-light-green,
+    'accent-foreground':$color-mid-green,
+    'accent-background':$color-dark-green,
+    'white':$color-white,
+    'black':$color-black,
+);
+
+
+$font-family: Arial, sans-serif;
+
+$font-weight:(
+    'light':200,
+    'normal':400,
+    'bold':700
+);
+
+$breakpoints:(
+    'regular':(
+        min-width:768px,
+    ),
+    'large':(
+        min-width:1024px,
+    ),
+    'extra-large':(
+        min-width:1280px,
+
+    ),
+
+);
+

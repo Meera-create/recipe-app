@@ -1,0 +1,57 @@
+@use './variables';
+
+@mixin size($width,$height:$width){
+    width:$width;
+    height:$height;
+}
+
+@mixin breakpoints($screen-size){
+    $raw-query: map-get(variables.$breakpoints,$screen-size);
+}
+
+@if $raw-query{
+    $query:if(
+        typeof($raw-string) =='string',
+        unquote($raw-query),
+        inspect($raw-query)
+    );
+
+@media #{$query}{
+    @content;
+}
+}@else{
+    @error 'no value found for `#{breakpoint}`. '
+
+}
+
+
+@mixin h1{
+    font-size:2rem;
+    line-height:1.1;
+    font-weight:400;
+    text-transform: uppercase;
+
+    @include breakpoint('large'){
+        font-size:90px;
+    }
+}
+
+@mixin h2{
+    font-size:1.5rem;
+    line-height:1.1;
+    font-weight:400;
+
+    @include breakpoint('large'){
+        font-size:1rem;
+    }
+}
+
+@mixin h3{
+    font-size:1.2rem;
+    line-height:1.1;
+    font-weight:400;
+
+    @include breakpoint('large'){
+        font-size:64px;
+    }
+}

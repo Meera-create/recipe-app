@@ -1,6 +1,7 @@
 import React from 'react';
-
 import parse from 'html-react-parser';
+import '../../styles/components/_single-recipe.scss'
+
 
 
 const SingleRecipe = ({ extractedRecipe }) => {
