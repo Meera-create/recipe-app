@@ -1,0 +1,24 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+ul{
+    list-style-type:none;
+}
+
+button{
+    height:2rem;
+    width:7.5rem;
+    margin:functions.spacing('xs');
+    
+}
+
+   
+li.logout_button {
+    position: relative;
+    display: inline-block;
+}
+
+a{
+    text-decoration:none;
+    color:functions.color('black')
+}
