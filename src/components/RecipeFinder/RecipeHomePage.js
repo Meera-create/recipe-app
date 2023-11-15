@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import RecipeFinderForm from './RecipeFinderForm';
 import RecipeAll from './RecipesAll';
 import SingleRecipe from './SingleRecipe';
+import '../../styles/pages/_recipe-home-page.scss'
+
 
 const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);

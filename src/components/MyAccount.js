@@ -1,5 +1,10 @@
+
+
+import '../styles/pages/_my-account.scss'
+
 import React, { useContext } from 'react';
 import { Context } from '../Context/AuthContext';
+
 
 const MyAccount = () => {
   const { user } = useContext(Context);

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { auth } from "../config/firebase";
 import Alert from "./RecipeFinder/Alert";
+import '../styles/components/_login.scss'
 
 const Login = () => {
   const initialState = {
