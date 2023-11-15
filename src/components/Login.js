@@ -52,17 +52,22 @@ const Login = () => {
     <div className="login">
       <Alert message={alert.message} success={alert.isSuccess} />
       <form className="login-form" onSubmit={handleLogin}>
+
+        <div className="email">
       <label htmlFor="email">
-          Email: <br /><br />
+          Email: </label>
           <input 
             id="email" 
             name="email" 
             value={fields.email} 
             onChange={handleFieldChange} 
           />
-        </label>
+          </div>
+       
+        
+        <div className="password">
         <label htmlFor="password">
-          Password: <br /><br />
+          Password: </label>
           <input
             id="password"
             name="password"
@@ -70,7 +75,10 @@ const Login = () => {
             value={fields.password}
             onChange={handleFieldChange} 
           />
-        </label>
+          
+        </div>
+        
+
         <button type="submit">Login</button>
       </form>
     </div>

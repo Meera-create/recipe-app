@@ -3,6 +3,8 @@
 
 ul{
     list-style-type:none;
+    width:35rem;
+    display:inline-block;
 }
 
 button{
@@ -20,5 +22,10 @@ li.logout_button {
 
 a{
     text-decoration:none;
-    color:functions.color('black')
+    color:functions.color('black');
+}
+
+img{
+    height:5rem;
+    width:4rem;
 }

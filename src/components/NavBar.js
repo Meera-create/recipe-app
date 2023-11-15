@@ -2,15 +2,19 @@ import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Logout from "./Logout";
 import { Context } from "../Context/AuthContext";
-import { FaPoop } from "react-icons/fa"
+// import { FaPoop } from "react-icons/fa"
 import '../styles/components/_nav-bar.scss'
+import image from '../../src/styles/images/the pantry (1).jpg'
 
 const NavBar = () => {
   const { user } = useContext(Context);
 
   return (
     <div className="navbar">
-      <Link reloadDocument to="/recipe-form"><FaPoop /></Link>
+      <Link reloadDocument to="/recipe-form">
+        <img alt="logo" src={image} />
+        {/* <FaPoop /> */}
+      </Link>
       {user && (
         <ul className="navbar_buttons">
           <li className="account_button">
