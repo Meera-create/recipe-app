@@ -66,7 +66,7 @@ const Login = () => {
             id="password"
             name="password"
             type="password"
-            values={fields.password}
+            value={fields.password}
             onChange={handleFieldChange} 
           />
         </label>
