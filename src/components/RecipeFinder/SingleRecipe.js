@@ -15,9 +15,23 @@ const SingleRecipe = ({ extractedRecipe }) => {
         console.log(extractedRecipe);
         try {
             const docRef = await addDoc(collection(db, "recipes"), {
-                recipeId: extractedRecipe.id,
-                title: extractedRecipe.title,
-                uid: user.uid
+                uid: user.uid,
+                recipe: extractedRecipe
+                // recipeId: extractedRecipe.id,
+                // title: extractedRecipe.title,
+                // image: extractedRecipe.image,
+                // cheap: extractedRecipe.cheap,
+                // dairyFree: extractedRecipe.dairyFree,
+                // diets: extractedRecipe.diets,
+                // extendedIngredients: extractedRecipe.extendedIngredients,
+                // glutenFree: extractedRecipe.glutenFree,
+                // instructions: extractedRecipe.instructions,
+                // readyInMinutes: extractedRecipe.readyInMinutes,
+                // servings: extractedRecipe.servings,
+                // sourceUrl: extractedRecipe.sourceUrl,
+                // summary: extractedRecipe.summary,
+                // vegan: extractedRecipe.vegan,
+                // vegetarian: extractedRecipe.vegetarian,
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (error) {
