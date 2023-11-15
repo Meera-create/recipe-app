@@ -1,4 +1,5 @@
 @use './variables';
+@use './functions';
 
 @mixin size($width,$height:$width){
     width:$width;
@@ -7,7 +8,7 @@
 
 @mixin breakpoints($screen-size){
     $raw-query: map-get(variables.$breakpoints,$screen-size);
-}
+
 
 @if $raw-query{
     $query:if(
@@ -23,6 +24,7 @@
     @error 'no value found for `#{breakpoint}`. '
 
 }
+}
 
 
 @mixin h1{
@@ -30,6 +32,7 @@
     line-height:1.1;
     font-weight:400;
     text-transform: uppercase;
+  
 
     @include breakpoint('large'){
         font-size:90px;
@@ -54,4 +57,12 @@
     @include breakpoint('large'){
         font-size:64px;
     }
+}
+
+@mixin text-base{
+    font-family: variables.$font-family;
+    font-size:1rem;
+    line-height:1.5;
+    font-weight:400;
+    color:functions.color('accent-background');
 }

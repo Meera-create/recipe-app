@@ -10,7 +10,9 @@ const MyAccount = () => {
   const { user } = useContext(Context);
   console.log(user);
   return (
-    <div>{`${user.displayName}'s Account`}</div>
+    <div>
+      {`${user.displayName}'s Account`}
+    </div>
   )
 }
 

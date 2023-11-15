@@ -12,11 +12,13 @@ const NavBar = () => {
     <div className="navbar">
       <Link reloadDocument to="/recipe-form"><FaPoop /></Link>
       {user && (
-        <ul>
-          <li>
-            <NavLink to="my-account">My Account</NavLink>
+        <ul className="navbar_buttons">
+          <li className="account_button">
+            <button type="button">
+              <NavLink to="my-account">My Account</NavLink>
+            </button>
           </li>
-          <li>
+          <li className="logout_button">
             <Logout />
           </li>
         </ul>

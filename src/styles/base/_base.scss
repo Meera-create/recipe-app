@@ -1,3 +1,23 @@
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+@use '../abstracts/variables';
+
 body{
-    background-color: darkolivegreen;
+    @include mixins.text-base;
+    background: functions.color('background');
 }
+
+h1{
+    @include mixins.h1;
+}
+
+h2{
+    @include mixins.h2;
+}
+
+
+h3{
+    @include mixins.h3;
+}
+
+
