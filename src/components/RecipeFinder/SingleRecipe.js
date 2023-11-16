@@ -1,23 +1,25 @@
 import React, { useContext } from 'react';
 import { Context } from '../../Context/AuthContext';
-import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
-import '../../styles/components/_single-recipe.scss';
+import '../../styles/components/_single-recipe.scss'
 
-const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
-  const { user } = useContext(Context);
+
+
+const SingleRecipe = ({ extractedRecipe }) => {
+    const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
         e.preventDefault();
         console.log(extractedRecipe);
         try {
-            await setDoc(doc(db, "recipes", `${extractedRecipe.id}`), {
+            const docRef = await addDoc(collection(db, "recipes"), {
                 uid: user.uid,
-                recipe: extractedRecipe,
-                createdAt: serverTimestamp()
+                recipe: extractedRecipe
             });
+            console.log("Document written with ID: ", docRef.id);
             toast.success("Recipe saved!")
         } catch (error) {
             console.error("Error adding document: ", error);
@@ -67,4 +69,3 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
 };
 
 export default SingleRecipe;
-

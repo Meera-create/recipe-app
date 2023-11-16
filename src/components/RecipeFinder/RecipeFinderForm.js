@@ -38,6 +38,8 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("ingredientsList:", ingredientsList);
+  console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",+");
@@ -52,6 +54,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             "x-api-key": apiConfig.apiKey,
           },
         });
+
         setRecipes(data);
         setSearch(true);
         setExtractedRecipe({});
@@ -71,25 +74,21 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     <div className="form">
       <Toaster />
       <h1>Search for a recipe...</h1>
-      <h2 className="instructions">Just type an ingredient into the search bar and click add. You 
-        can add multiple ingredients. If the search returns no results, try removing and
-        ingredient from the list.
-      </h2>
-      <form className="recipe-finder-form"> 
+      <form>
         <div className="search-box">
           <label>Type Ingredients to Search</label>
           <input
-            className="input-ingredients"
             type="text"
             placeholder="Add ingredients"
             value={ingredient}
             onChange={handleIngredientChange}
           />
+        </div>
         <div className="cuisine-filter">
           <label>Select Cuisine Type</label>
           <select value={cuisineType} onChange={handleCuisineChange}>
             <option value="">All Cuisines</option>
-            <option value="iitalian">African</option>
+            <option value="italian">African</option>
             <option value="asian">Asian</option>
             <option value="american">American</option>
             <option value="british">British</option>
@@ -116,13 +115,13 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             <option value="spanish">Spanish</option>
             <option value="thai">Thai</option>
             <option value="vivatnamese">Vietnamese</option>
+          
           </select>
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /> <br /><br /></>}
         <button type="button" onClick={handleSubmit}>Search</button>
-        </div>
       </form>
     </div>
   );
