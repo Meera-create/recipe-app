@@ -3,11 +3,9 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
-import '../../styles/components/_recipe-finder-form.scss'
-
+import '../../styles/components/_recipe-finder-form.scss';
 
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
- 
   const initialState = {
     alert: {
       message: "",
@@ -17,6 +15,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
   };
 
   const [ingredient, setIngredient] = useState(initialState.ingredient);
+  const [cuisineType, setCuisineType] = useState("");
 
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
@@ -33,18 +32,26 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     }
   };
 
+  const handleCuisineChange = (e) => {
+    setCuisineType(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",+");
-        const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`, {
-            headers: {
-              "x-api-key": apiConfig.apiKey,
-            },
-          }
-        );
+        let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`;
+
+        if (cuisineType) {
+          apiUrl += `&cuisine=${cuisineType}`;
+        }
+
+        const { data } = await axios.get(apiUrl, {
+          headers: {
+            "x-api-key": apiConfig.apiKey,
+          },
+        });
 
         setRecipes(data);
         setSearch(true);
@@ -75,9 +82,43 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             onChange={handleIngredientChange}
           />
         </div>
+        <div className="cuisine-filter">
+          <label>Select Cuisine Type</label>
+          <select value={cuisineType} onChange={handleCuisineChange}>
+            <option value="">All Cuisines</option>
+            <option value="italian">African</option>
+            <option value="indian">Asian</option>
+            <option value="indian">American</option>
+            <option value="indian">British</option>
+            <option value="indian">Cajun</option>
+            <option value="indian">Carribean</option>
+            <option value="indian">Chinese</option>
+            <option value="indian">Eastern European</option>
+            <option value="indian">European</option>
+            <option value="indian">French</option>
+            <option value="indian">German</option>
+            <option value="indian">Greek</option>
+            <option value="indian">Indian</option>
+            <option value="indian">Irish</option>
+            <option value="indian">Italian</option>
+            <option value="indian">Japanese</option>
+            <option value="indian">Jewish</option>
+            <option value="indian">Korean</option>
+            <option value="indian">Latin American</option>
+            <option value="indian">Mediterranean</option>
+            <option value="indian">Mexican</option>
+            <option value="indian">Middle Eastern</option>
+            <option value="indian">Nordic</option>
+            <option value="indian">Southern</option>
+            <option value="indian">Spanish</option>
+            <option value="indian">Thai</option>
+            <option value="indian">Vietnamese</option>
+          
+          </select>
+        </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
-        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /> <br /><br /></>}
         <button type="button" onClick={handleSubmit}>Search</button>
       </form>
     </div>
@@ -85,3 +126,4 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 };
 
 export default RecipeFinderForm;
+
