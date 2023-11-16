@@ -8,7 +8,7 @@ import '../../styles/components/_single-recipe.scss'
 
 
 
-const SingleRecipe = ({ extractedRecipe }) => {
+const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
     const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
