@@ -6,6 +6,7 @@ import NavBar from './NavBar.js';
 import MyAccount from './MyAccount.js';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
 import RecipeHomePage from './RecipeFinder/RecipeHomePage.js';
+import Protected from './Protected.js';
 
 const App = () => {
 
@@ -16,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeHomePage />} />
-          <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/my-account" element={<Protected><MyAccount /></Protected>} />
           <Route path="/single-recipe" element={<SingleRecipe />} />
         </Routes>
       </AuthContext>
