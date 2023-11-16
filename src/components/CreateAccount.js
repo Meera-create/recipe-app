@@ -52,8 +52,9 @@ const CreateAccount = () => {
   return (
     <div>
       <Alert message={alert.message} success={alert.isSuccess} />
-      <form onSubmit={handleSignUp}>
-        <div className="username">
+      <form onSubmit={handleSignUp} className="create-account">
+
+        <div className="box-input">
         <label htmlFor="username-signup">
           Username: 
           </label>
@@ -65,7 +66,7 @@ const CreateAccount = () => {
           />
           </div>
        
-        <div className="email">
+        <div className="box-input">
         <label htmlFor="email-signup">
           Email: </label>
           <input 
@@ -76,7 +77,7 @@ const CreateAccount = () => {
           />
           </div>
         
-        <div className="password">
+        <div className="box-input">
         <label htmlFor="password-signup">
           Password:</label>
           <input
@@ -89,8 +90,10 @@ const CreateAccount = () => {
           </div>
         
 
+        <div className="box-input">
+          <button type="submit">Sign Up</button>
+        </div>
         
-        <button type="submit">Sign Up</button>
       </form>
     </div>
   )

@@ -10,24 +10,49 @@ const NavBar = () => {
   const { user } = useContext(Context);
 
   return (
-    <div className="navbar">
-      <Link reloadDocument to="/recipe-form">
+       <div className="navbar">
+      
+      {user && (
+        <div className="buttons">
+          <div className="boxes">
+        <Link reloadDocument to="/recipe-form">
         <img alt="logo" src={image} />
         {/* <FaPoop /> */}
-      </Link>
-      {user && (
-        <ul className="navbar_buttons">
-          <li className="account_button">
-            <button type="button">
+            </Link>
+          </div>
+
+
+            <div className="boxes2">
+          <button type="button"className="my-account">
               <NavLink to="my-account">My Account</NavLink>
             </button>
-          </li>
-          <li className="logout_button">
-            <Logout />
-          </li>
-        </ul>
+         
+          <Logout />
+          </div>
+          </div>
+       
       )}
     </div>
+
+
+    // <div className="navbar">
+    //   <Link reloadDocument to="/recipe-form">
+    //     <img alt="logo" src={image} />
+    //     {/* <FaPoop /> */}
+    //   </Link>
+    //   {user && (
+    //     <ul className="navbar_buttons">
+    //       <li className="account_button">
+    //         <button type="button"className="my-account">
+    //           <NavLink to="my-account">My Account</NavLink>
+    //         </button>
+    //       </li>
+    //       <li className="logout_button">
+    //         <Logout />
+    //       </li>
+    //     </ul>
+    //   )}
+    // </div>
   )
 };
 

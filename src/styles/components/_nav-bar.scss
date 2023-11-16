@@ -14,6 +14,15 @@ button{
     
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+}
+
    
 li.logout_button {
     position: relative;
@@ -28,4 +37,12 @@ a{
 img{
     height:5rem;
     width:4rem;
+}
+
+.boxes2{
+    display:flex;
+}
+
+button.logout-button {
+    margin-left: functions.spacing('medium');
 }

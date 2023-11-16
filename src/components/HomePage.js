@@ -10,17 +10,17 @@ const Homepage = () => {
         <div className="welcome-page">
             <h1>Welcome to the Pantry</h1>
             
-            <div className="component">
+            <div className="component1">
             <h2>Login if you are new to us</h2>
                 <Login />
             </div>
             
-            <div className="component">
+            <div className="component2">
             <h2>Sign up to create a new Account</h2>
                 <CreateAccount />
             </div>
             
-            <div className="component">
+            <div className="component3">
             <h2>Otherwise, continue as guest</h2>
                 <GuestLogin />
             </div>
