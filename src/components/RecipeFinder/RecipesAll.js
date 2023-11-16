@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Alert from './Alert';
 import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
