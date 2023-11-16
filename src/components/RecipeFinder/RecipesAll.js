@@ -5,7 +5,7 @@ import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
 const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
-
+  
   const selectRecipe = async (event) => {
     event.preventDefault();
     const recipeId = event.target.value;
@@ -58,3 +58,4 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
 };
 
 export default RecipeAll;
+

@@ -1,0 +1,7 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+
+h2{
+    margin-left:functions.spacing('margin')
+}

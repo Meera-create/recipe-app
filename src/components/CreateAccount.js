@@ -52,27 +52,35 @@ const CreateAccount = () => {
   return (
     <div>
       <Alert message={alert.message} success={alert.isSuccess} />
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={handleSignUp} className="create-account">
+
+        <div className="box-input">
         <label htmlFor="username-signup">
-          Username: <br /><br />
+          Username: 
+          </label>
           <input 
             id="username-signup" 
             name="username" 
-            value={fields.username} 
+            value={fields.username}
+            required 
             onChange={handleFieldChange} 
           />
-        </label> <br /><br />
+          </div>
+       
+        <div className="box-input">
         <label htmlFor="email-signup">
-          Email: <br /><br />
+          Email: </label>
           <input 
             id="email-signup" 
             name="email" 
             value={fields.email} 
             onChange={handleFieldChange} 
           />
-        </label> <br /><br />
+          </div>
+        
+        <div className="box-input">
         <label htmlFor="password-signup">
-          Password: <br /><br />
+          Password:</label>
           <input
             id="password-signup"
             name="password"
@@ -80,8 +88,13 @@ const CreateAccount = () => {
             value={fields.password}
             onChange={handleFieldChange} 
           />
-        </label> <br /><br />
-        <button type="submit">Sign Up</button>
+          </div>
+        
+
+        <div className="box-input">
+          <button type="submit">Sign Up</button>
+        </div>
+        
       </form>
     </div>
   )
