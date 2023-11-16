@@ -27,6 +27,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         }
     };
 
+
   const unlistedIngredients =
     extractedRecipe.extendedIngredients &&
     extractedRecipe.extendedIngredients.filter(
@@ -43,7 +44,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
             <div >
                 <img className="image" alt="pic of food"  src={extractedRecipe.image} />
             </div> 
-      <div >
+      <div className="ingredients" >
         <h3>Ingredients:</h3>
         <ul>
           {unlistedIngredients &&
@@ -51,7 +52,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
               <li key={index}>{ingredient.original}</li>
             ))}
         </ul>
-              </div>
+              </div className="instructions">
               <h3>Instructions:</h3>
                   {parse(`${extractedRecipe.instructions}`)}
                   

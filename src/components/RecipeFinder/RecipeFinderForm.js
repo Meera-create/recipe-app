@@ -74,7 +74,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     <div className="form">
       <Toaster />
       <h1>Search for a recipe...</h1>
-      <form>
+      <form className="searchForm">
         <div className="search-box">
           <label>Type Ingredients to Search</label>
           <input
@@ -119,7 +119,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
           </select>
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
-        <br /><br />
+       
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /> <br /><br /></>}
         <button type="button" onClick={handleSubmit}>Search</button>
       </form>
