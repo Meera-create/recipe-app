@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../../Context/AuthContext';
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
@@ -16,11 +16,11 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         e.preventDefault();
         console.log(extractedRecipe);
         try {
-            const docRef = await addDoc(collection(db, "recipes"), {
+            await setDoc(doc(db, "recipes", `${extractedRecipe.id}`), {
                 uid: user.uid,
-                recipe: extractedRecipe
+                recipe: extractedRecipe,
+                createdAt: serverTimestamp()
             });
-            console.log("Document written with ID: ", docRef.id);
             toast.success("Recipe saved!")
         } catch (error) {
             console.error("Error adding document: ", error);
