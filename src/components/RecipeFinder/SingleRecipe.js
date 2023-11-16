@@ -28,20 +28,34 @@ const SingleRecipe = ({ extractedRecipe }) => {
   return (
     <div className="single_recipe">
       <Toaster />
-      <h1>Your recipe</h1>
-      <p>{extractedRecipe.title}</p>
-      <div>
-        <h2>Ingredients:</h2>
+          <h1>Your recipe</h1>
+          <div className="clicked-recipe">
+              <h2>{extractedRecipe.title}</h2>
+              <div className="full-recipe">
+            <div >
+                <img className="image" alt="pic of food"  src={extractedRecipe.image} />
+            </div>
+
+                  
+      <div >
+        <h3>Ingredients:</h3>
         <ul>
           {extractedRecipe.extendedIngredients &&
             extractedRecipe.extendedIngredients.map((ingredient, index) => (
               <li key={index}>{ingredient.original}</li>
             ))}
         </ul>
-      </div>
-      {parse(`${extractedRecipe.instructions}`)}
-      <p>Time to cook {extractedRecipe.readyInMinutes}</p>
-      <button type="button" onClick={saveRecipe}>
+              </div>
+              <h3>Instructions:</h3>
+                  {parse(`${extractedRecipe.instructions}`)}
+                  
+              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+              
+              </div>
+          </div>
+          
+          
+      <button className="save-button" type="button" onClick={saveRecipe}>
         Save
       </button>
     </div>

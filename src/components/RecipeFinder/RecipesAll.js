@@ -44,7 +44,10 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
 
     return (
         <div className="recipesAll">
-          {search && <h1>Here is a list of recipes that match your search!</h1>}
+            {search &&
+                <div><h1>Here is a list of recipes that match your search!</h1> 
+                    <h2 className="recipe-all">Click on a recipe to see full instructions and ingredients</h2>
+            </div>}
           {alert && <Alert message={alert.message} />}
 
           <ul className="recipes">
@@ -55,9 +58,8 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
                         onClick={selectRecipe}
                     >
                         {recipe.title}
-                        {/* {recipe.url} */}
-                      
-                        {recipe.id}
+                        
+                        
                     </button> 
             ))}
           </ul>
