@@ -16,7 +16,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         e.preventDefault();
         console.log(extractedRecipe);
         try {
-            await setDoc(doc(db, "recipes", `${extractedRecipe.id}`), {
+            await setDoc(doc(db, "recipes", `${extractedRecipe.id} - ${user.uid}`), {
                 uid: user.uid,
                 recipe: extractedRecipe,
                 createdAt: serverTimestamp()
