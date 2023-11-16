@@ -48,10 +48,14 @@ const SingleRecipe = ({ extractedRecipe }) => {
             <div className="single_recipe">
                 <Toaster />
                 <h1>Your recipe</h1>
-                <p>{extractedRecipe.title}</p>
-                {parse(`${extractedRecipe.instructions}`)}
-                <p>Time to cook {extractedRecipe.readyInMinutes}</p>
-                <button type="button" onClick={saveRecipe}>Save</button>
+                <h2>{extractedRecipe.title}</h2>
+                <img className="recipe-pic" src={extractedRecipe.image} alt="recipe" />
+                <div className="instructions">
+                    {parse(`${extractedRecipe.instructions}`)}
+                </div>
+                
+                <h3>Time to cook {extractedRecipe.readyInMinutes}</h3>
+                <button className="save-recipe" type="button" onClick={saveRecipe}>Save</button>
             </div>
         )
     }
