@@ -1,0 +1,48 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+
+h1 {
+    margin-left: functions.spacing('margin');
+    margin-top: functions.spacing('x-large');
+}
+
+form.recipe-finder-form {
+    margin-left: functions.spacing('margin');
+}
+
+h2.instructions {
+    font-size: 1.2rem;
+    margin-left: functions.spacing('margin');
+}
+
+button.add-button {
+    margin-top: functions.spacing('xs');
+}
+
+
+input.input-ingredients {
+    margin-left: functions.spacing('xs');
+}
+
+button.submit-button {
+    height: functions.spacing('x-large')
+}
+
+button.eachRecipe {
+    height: 4rem;
+    width:15rem;
+    font-size:0.9rem;
+}
+
+ul.recipes {
+    margin-left: 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

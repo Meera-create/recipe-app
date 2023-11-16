@@ -1,0 +1,25 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+
+
+
+clicked-recipe {
+    margin-left: functions.spacing('margin');
+}
+
+
+button.save-button {
+    margin-left: 4rem;
+}
+
+.full-recipe{
+    margin-left:functions.spacing('margin');
+}
+
+img.image {
+    height: 14rem;
+    width: 19rem;
+    border: 3px solid #d9be9f;
+    padding:1rem;
+}

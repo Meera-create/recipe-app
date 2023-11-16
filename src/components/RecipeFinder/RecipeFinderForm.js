@@ -45,7 +45,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             },
           }
         );
-
+        console.log(data) 
         setRecipes(data);
         setSearch(true);
         setExtractedRecipe({});
@@ -65,20 +65,25 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     <div className="form">
       <Toaster />
       <h1>Search for a recipe...</h1>
-      <form>
+      <h2 className="instructions">Just type an ingredient into the search bar and click add. You 
+        can add multiple ingredients. If the search returns no results, try removing and
+        ingredient from the list.
+      </h2>
+      <form className="recipe-finder-form"> 
         <div className="search-box">
           <label>Type Ingredients to Search</label>
           <input
+            className="input-ingredients"
             type="text"
             placeholder="Add ingredients"
             value={ingredient}
             onChange={handleIngredientChange}
           />
         </div>
-        <button type="submit" onClick={handleAddIngredient}>Add</button>
-        <br /><br />
-        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/> <br /><br /></>}
-        <button type="button" onClick={handleSubmit}>Search</button>
+        <button className="add-button" type="submit" onClick={handleAddIngredient}>Add</button>
+        
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList}/></>}
+        <button className="submit-button" type="button" onClick={handleSubmit}>SEARCH INGREDIENTS</button>
       </form>
     </div>
   );
