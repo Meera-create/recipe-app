@@ -15,13 +15,14 @@ const RecipeHomePage = () => {
   // const [url, setURL] = useState();
   const [extractedRecipe, setExtractedRecipe] = useState({});
   const [ingredientsList, setIngredientsList] = useState([]);
+  
 
   return (
     <div className='recipe-homepage'>
       <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList} 
         setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe}/>
         {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}/>}
-      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} />}
+      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe}/>}
     </div>
   );
 }

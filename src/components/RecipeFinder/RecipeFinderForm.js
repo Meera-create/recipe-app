@@ -5,7 +5,7 @@ import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_recipe-finder-form.scss';
 
-const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe }) => {
+const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe}) => {
   const initialState = {
     alert: {
       message: "",
@@ -14,7 +14,8 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     ingredient: "",
   };
 
-  const [ingredient, setIngredient] = useState(initialState.ingredient);
+   const [ingredient, setIngredient] = useState(initialState.ingredient);
+ 
   const [cuisineType, setCuisineType] = useState("");
 
   const handleIngredientChange = (e) => {
