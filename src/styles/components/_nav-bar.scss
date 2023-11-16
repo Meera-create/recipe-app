@@ -3,6 +3,8 @@
 
 ul{
     list-style-type:none;
+    width:35rem;
+    display:inline-block;
 }
 
 button{
@@ -10,6 +12,15 @@ button{
     width:7.5rem;
     margin:functions.spacing('xs');
     
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
 }
 
    
@@ -20,5 +31,18 @@ li.logout_button {
 
 a{
     text-decoration:none;
-    color:functions.color('black')
+    color:functions.color('black');
+}
+
+img{
+    height:5rem;
+    width:4rem;
+}
+
+.boxes2{
+    display:flex;
+}
+
+button.logout-button {
+    margin-left: functions.spacing('medium');
 }

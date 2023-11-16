@@ -8,11 +8,24 @@ import '../styles/pages/_home-page.scss'
 const Homepage = () => {
     return(
         <div className="welcome-page">
-            <h1>Welcome to the Pantry!!</h1>
-            <h3>Login in or Sign is as Guest to Find your recipes</h3>
-            <CreateAccount />
-            <GuestLogin />
-            <Login />
+            <h1>Welcome to the Pantry</h1>
+            
+            <div className="component1">
+            <h2>Login if you are new to us</h2>
+                <Login />
+            </div>
+            
+            <div className="component2">
+            <h2>Sign up to create a new Account</h2>
+                <CreateAccount />
+            </div>
+            
+            <div className="component3">
+            <h2>Otherwise, continue as guest</h2>
+                <GuestLogin />
+            </div>
+            
+            
         </div>
     )
 }
