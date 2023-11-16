@@ -8,9 +8,7 @@ import '../../styles/components/_single-recipe.scss'
 
 
 
-const SingleRecipe = ({ extractedRecipe }) => {
-    // console.log(extractedRecipe);
-
+const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
     const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
@@ -20,21 +18,6 @@ const SingleRecipe = ({ extractedRecipe }) => {
             const docRef = await addDoc(collection(db, "recipes"), {
                 uid: user.uid,
                 recipe: extractedRecipe
-                // recipeId: extractedRecipe.id,
-                // title: extractedRecipe.title,
-                // image: extractedRecipe.image,
-                // cheap: extractedRecipe.cheap,
-                // dairyFree: extractedRecipe.dairyFree,
-                // diets: extractedRecipe.diets,
-                // extendedIngredients: extractedRecipe.extendedIngredients,
-                // glutenFree: extractedRecipe.glutenFree,
-                // instructions: extractedRecipe.instructions,
-                // readyInMinutes: extractedRecipe.readyInMinutes,
-                // servings: extractedRecipe.servings,
-                // sourceUrl: extractedRecipe.sourceUrl,
-                // summary: extractedRecipe.summary,
-                // vegan: extractedRecipe.vegan,
-                // vegetarian: extractedRecipe.vegetarian,
             });
             console.log("Document written with ID: ", docRef.id);
             toast.success("Recipe saved!")
@@ -43,22 +26,47 @@ const SingleRecipe = ({ extractedRecipe }) => {
             toast.error("There was a problem saving the recipe - please try again later");
         }
     };
-    // console.log(recipeID, 'this is a recipe ID')
-        return (
-            <div className="single_recipe">
-                <Toaster />
-                <h1>Your recipe</h1>
-                <h2>{extractedRecipe.title}</h2>
-                <img className="recipe-pic" src={extractedRecipe.image} alt="recipe" />
-                <div className="instructions">
-                    {parse(`${extractedRecipe.instructions}`)}
-                </div>
-                
-                <h3>Time to cook {extractedRecipe.readyInMinutes}</h3>
-                <button className="save-recipe" type="button" onClick={saveRecipe}>Save</button>
-            </div>
-        )
-    }
 
+
+  const unlistedIngredients =
+    extractedRecipe.extendedIngredients &&
+    extractedRecipe.extendedIngredients.filter(
+      (ingredient) => !ingredientsList?.includes(ingredient.original)
+    );
+
+  return (
+    <div className="single_recipe">
+      <Toaster />
+          <h1>Your recipe</h1>
+          <div className="clicked-recipe">
+              <h2>{extractedRecipe.title}</h2>
+              <div className="full-recipe">
+            <div >
+                <img className="image" alt="pic of food"  src={extractedRecipe.image} />
+            </div> 
+      <div className="ingredients" >
+        <h3>Ingredients:</h3>
+        <ul>
+          {unlistedIngredients &&
+            unlistedIngredients.map((ingredient, index) => (
+              <li key={index}>{ingredient.original}</li>
+            ))}
+        </ul>
+              </div className="instructions">
+              <h3>Instructions:</h3>
+                  {parse(`${extractedRecipe.instructions}`)}
+                  
+              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+              
+              </div>
+          </div>
+          
+          
+      <button className="save-button" type="button" onClick={saveRecipe}>
+        Save
+      </button>
+    </div>
+  );
+};
 
 export default SingleRecipe;
