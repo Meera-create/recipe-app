@@ -58,7 +58,8 @@ const CreateAccount = () => {
           <input 
             id="username-signup" 
             name="username" 
-            value={fields.username} 
+            value={fields.username}
+            required 
             onChange={handleFieldChange} 
           />
         </label> <br /><br />

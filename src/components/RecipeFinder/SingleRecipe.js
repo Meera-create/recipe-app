@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../../Context/AuthContext';
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
@@ -17,33 +17,17 @@ const SingleRecipe = ({ extractedRecipe }) => {
         e.preventDefault();
         console.log(extractedRecipe);
         try {
-            const docRef = await addDoc(collection(db, "recipes"), {
+            await setDoc(doc(db, "recipes", `${extractedRecipe.id}`), {
                 uid: user.uid,
-                recipe: extractedRecipe
-                // recipeId: extractedRecipe.id,
-                // title: extractedRecipe.title,
-                // image: extractedRecipe.image,
-                // cheap: extractedRecipe.cheap,
-                // dairyFree: extractedRecipe.dairyFree,
-                // diets: extractedRecipe.diets,
-                // extendedIngredients: extractedRecipe.extendedIngredients,
-                // glutenFree: extractedRecipe.glutenFree,
-                // instructions: extractedRecipe.instructions,
-                // readyInMinutes: extractedRecipe.readyInMinutes,
-                // servings: extractedRecipe.servings,
-                // sourceUrl: extractedRecipe.sourceUrl,
-                // summary: extractedRecipe.summary,
-                // vegan: extractedRecipe.vegan,
-                // vegetarian: extractedRecipe.vegetarian,
+                recipe: extractedRecipe,
+                createdAt: serverTimestamp()
             });
-            console.log("Document written with ID: ", docRef.id);
             toast.success("Recipe saved!")
         } catch (error) {
             console.error("Error adding document: ", error);
             toast.error("There was a problem saving the recipe - please try again later");
         }
     };
-    // console.log(recipeID, 'this is a recipe ID')
         return (
             <div className="single_recipe">
                 <Toaster />
