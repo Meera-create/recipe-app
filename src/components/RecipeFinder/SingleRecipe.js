@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss';
 
-const SingleRecipe = ({ extractedRecipe }) => {
+const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
   const { user } = useContext(Context);
 
   const saveRecipe = async (e) => {
@@ -25,6 +25,12 @@ const SingleRecipe = ({ extractedRecipe }) => {
     }
   };
 
+  const unlistedIngredients =
+    extractedRecipe.extendedIngredients &&
+    extractedRecipe.extendedIngredients.filter(
+      (ingredient) => !ingredientsList?.includes(ingredient.original)
+    );
+
   return (
     <div className="single_recipe">
       <Toaster />
@@ -33,8 +39,8 @@ const SingleRecipe = ({ extractedRecipe }) => {
       <div>
         <h2>Ingredients:</h2>
         <ul>
-          {extractedRecipe.extendedIngredients &&
-            extractedRecipe.extendedIngredients.map((ingredient, index) => (
+          {unlistedIngredients &&
+            unlistedIngredients.map((ingredient, index) => (
               <li key={index}>{ingredient.original}</li>
             ))}
         </ul>
