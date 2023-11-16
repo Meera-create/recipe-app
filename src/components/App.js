@@ -7,8 +7,6 @@ import MyAccount from './MyAccount.js';
 import SingleRecipe from './RecipeFinder/SingleRecipe';
 import RecipeHomePage from './RecipeFinder/RecipeHomePage.js';
 
-
-
 const App = () => {
 
   return (
@@ -19,9 +17,9 @@ const App = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeHomePage />} />
           <Route path="/my-account" element={<MyAccount />} />
-          <Route path="/single-recipe" element={<SingleRecipe />} /> 
-         </Routes>
-        </AuthContext>
+          <Route path="/single-recipe" element={<SingleRecipe />} />
+        </Routes>
+      </AuthContext>
       </div>
     );
   }

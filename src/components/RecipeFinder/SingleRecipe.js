@@ -27,7 +27,6 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         }
     };
 
-
   const unlistedIngredients =
     extractedRecipe.extendedIngredients &&
     extractedRecipe.extendedIngredients.filter(
@@ -55,8 +54,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
                               unlistedIngredients.map((ingredient, index) => (
                 <>
                                   
-                    <li key={index}>{ingredient.original}</li>
-                                      <li key={index}>to buy:{ingredient.original} </li>
+                    <li key={index}>{ingredient.original}</li>                           <li key={index}>to buy:{ingredientName} </li>
             </>
                   
                 
@@ -66,6 +64,8 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         </div>
                   
               <div className="instructions">
+              </div>
+
               <h3>Instructions:</h3>
                   {parse(`${extractedRecipe.instructions}`)}
                   
