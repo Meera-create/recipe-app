@@ -9,6 +9,7 @@ import '../../styles/components/_single-recipe.scss'
 
 
 const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
+    // console.log("test");
     const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
