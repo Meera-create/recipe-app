@@ -41,7 +41,6 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",+");
-testsBranch
         let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`;
 
         if (cuisineType) {
@@ -53,8 +52,6 @@ testsBranch
             "x-api-key": apiConfig.apiKey,
           },
         });
-
-main
         setRecipes(data);
         setSearch(true);
         setExtractedRecipe({});
@@ -88,7 +85,6 @@ main
             value={ingredient}
             onChange={handleIngredientChange}
           />
- testsBranch
         <div className="cuisine-filter">
           <label>Select Cuisine Type</label>
           <select value={cuisineType} onChange={handleCuisineChange}>
@@ -120,14 +116,13 @@ main
             <option value="spanish">Spanish</option>
             <option value="thai">Thai</option>
             <option value="vivatnamese">Vietnamese</option>
-          
           </select>
         </div>
         <button type="submit" onClick={handleAddIngredient}>Add</button>
         <br /><br />
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /> <br /><br /></>}
         <button type="button" onClick={handleSubmit}>Search</button>
-main
+        </div>
       </form>
     </div>
   );
