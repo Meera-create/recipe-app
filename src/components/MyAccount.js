@@ -10,10 +10,11 @@ const MyAccount = () => {
   const { user } = useContext(Context);
   const [faveRecipes, setFaveRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedRecipe, setSelectedRecipe] = useState({});
 
   const getUserFaves = async () => {
     const querySnapshot = await getDocs(collection(db, "recipes"));
-    console.log(querySnapshot);
+    // console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       if (doc.data().uid === user.uid) {
         // console.log(`${doc.id} => ${doc.data().uid}`);
@@ -29,6 +30,14 @@ const MyAccount = () => {
     getUserFaves();
     setIsLoading(false);
   }, []);
+
+  const viewSavedRecipe = (e) => {
+    e.preventDefault();
+    const recipeName = e.target.innerText;
+    const recipeIndex = faveRecipes.findIndex(recipe => recipe.title === recipeName);
+    console.log(recipeIndex);
+    setSelectedRecipe(faveRecipes[recipeIndex]);
+  }
 
   if (isLoading === true) {
     console.log("Loading");
@@ -47,12 +56,14 @@ const MyAccount = () => {
           {console.log(faveRecipes)}
         </ul> */}
         {faveRecipes.map((recipe, index) => {
-          return <SavedRecipe key={index} recipe={recipe} />
-          // return (
-          //   <Link>
-          //   </Link>
-          // )
+          // return <SavedRecipe key={index} recipe={recipe} />
+          return (
+            <button className='eachRecipe' type='button' key={index} onClick={viewSavedRecipe}>
+              {recipe.title}
+            </button>
+          )
         })}
+        {selectedRecipe.title !== undefined && <SavedRecipe recipe={selectedRecipe} />}
       </div>
     )
   }
