@@ -38,8 +38,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe }) => {
   return (
     <div className="recipesAll">
       {search && <h1>Here is a list of recipes that match your search!</h1>}
-      {/* Assuming you have an 'alert' state somewhere */}
-      {/* {alert && <Alert message={alert.message} />} */}
+    
 
       <ul className="recipes">
         {recipes.map((recipe) => (
