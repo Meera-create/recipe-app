@@ -8,6 +8,37 @@ body{
 }
 
 .welcome-page{
-    // margin-left:functions.spacing('medium')
-    margin-left:functions.spacing('xx-large');
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.component1, .component2, .component3 {
+    margin-top:functions.spacing('large');
+    
+    width: 31rem;
+    border:0.2rem black solid;
+    padding: functions.spacing('medium');
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.component1{
+    height: 15rem;
+}
+
+.component2{
+    height: 21rem;
+}
+
+.component3{
+    height:10rem;
+}
+

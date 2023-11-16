@@ -1,0 +1,15 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+form.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.box {
+    margin-top:functions.spacing('medium');
+}
