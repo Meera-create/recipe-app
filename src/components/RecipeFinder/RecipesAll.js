@@ -54,7 +54,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
             onClick={selectRecipe}
           >
             {recipe.title}
-            {recipe.id}
+            
           </button>
         ))}
       </ul>
