@@ -40,9 +40,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
               <div className="full-recipe">
             <div >
                 <img className="image" alt="pic of food"  src={extractedRecipe.image} />
-            </div>
-
-                  
+            </div> 
       <div >
         <h3>Ingredients:</h3>
         <ul>
