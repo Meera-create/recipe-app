@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../../Context/AuthContext';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from '../../config/firebase';
 import { v4 as uuidv4 } from 'uuid';
 import IngredientsList from './IngredientsList';
 import InstructionsList from './InstructionsList';
@@ -91,10 +93,16 @@ const AddRecipeForm = () => {
   const handleAddRecipe = async (event) => {
     event.preventDefault();
     try {
-      console.log(uuidv4());
-    console.log(user.uid);
-    console.log(fields);
-    toast.success('Recipe added!');
+      // console.log(uuidv4());
+      // console.log(user.uid);
+      // console.log(fields);
+      const docRef = await addDoc(collection(db, "userRecipes"), {
+        uid: user.uid,
+        recipe: fields,
+        createdAt: serverTimestamp()
+      });
+      console.log("Document written with ID: ", docRef.id);
+      toast.success('Recipe added!');
     } catch (error) {
       toast.error('There was an error, please try again later');
     }
