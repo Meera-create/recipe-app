@@ -43,7 +43,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",+");
-        let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}`;
+        let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}&number=20`;
 
         if (cuisineType) {
           apiUrl += `&cuisine=${cuisineType}`;
