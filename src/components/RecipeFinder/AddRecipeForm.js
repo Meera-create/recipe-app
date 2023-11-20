@@ -93,9 +93,6 @@ const AddRecipeForm = () => {
   const handleAddRecipe = async (event) => {
     event.preventDefault();
     try {
-      // console.log(uuidv4());
-      // console.log(user.uid);
-      // console.log(fields);
       const docRef = await addDoc(collection(db, "userRecipes"), {
         uid: user.uid,
         recipe: fields,
@@ -103,6 +100,9 @@ const AddRecipeForm = () => {
       });
       console.log("Document written with ID: ", docRef.id);
       toast.success('Recipe added!');
+      setFields(initialState.fields);
+      setIngredientsList([]);
+      setInstructionsList([]);
     } catch (error) {
       toast.error('There was an error, please try again later');
     }
