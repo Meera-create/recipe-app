@@ -8,9 +8,9 @@ const SavedRecipe = ({ recipe }) => {
         <div className="clicked-recipe">
             <h2>{recipe.title}</h2>
             <div className="full-recipe">
-          <div >
+          {recipe.image !== undefined && <div>
               <img className="image" alt="pic of food"  src={recipe.image} />
-          </div>          
+          </div>}          
     <div >
       <h3>Ingredients:</h3>
       <ul>

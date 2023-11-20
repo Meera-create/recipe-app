@@ -9,6 +9,7 @@ import '../styles/pages/_my-account.scss'
 const MyAccount = () => {
   const { user } = useContext(Context);
   const [faveRecipes, setFaveRecipes] = useState([]);
+  const [userRecipes, setUserRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedRecipe, setSelectedRecipe] = useState({});
 
@@ -18,7 +19,7 @@ const MyAccount = () => {
     querySnapshot.forEach((doc) => {
       if (doc.data().uid === user.uid) {
         // console.log(`${doc.id} => ${doc.data().uid}`);
-        // console.log(doc.data().recipe)
+        console.log(doc.data().recipe)
         setFaveRecipes(prevState => {
             return [...prevState, doc.data().recipe];    
         });
@@ -26,8 +27,22 @@ const MyAccount = () => {
     });
   }
 
+  const getUserRecipes = async () => {
+    const querySnapshot = await getDocs(collection(db, "userRecipes"));
+    console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      if (doc.data().uid === user.uid) {
+        console.log(doc.data().recipe)
+        setUserRecipes(prevState => {
+          return [...prevState, doc.data().recipe];
+        });
+      }
+    });
+  }
+
   useEffect(() => {
     getUserFaves();
+    getUserRecipes();
     setIsLoading(false);
   }, []);
 
@@ -37,6 +52,14 @@ const MyAccount = () => {
     const recipeIndex = faveRecipes.findIndex(recipe => recipe.title === recipeName);
     console.log(recipeIndex);
     setSelectedRecipe(faveRecipes[recipeIndex]);
+  }
+
+  const viewAddedRecipe = (e) => {
+    e.preventDefault();
+    const recipeName = e.target.innerText;
+    const recipeIndex = userRecipes.findIndex(recipe => recipe.title === recipeName);
+    console.log(recipeIndex);
+    setSelectedRecipe(userRecipes[recipeIndex]);
   }
 
   if (isLoading === true) {
@@ -49,16 +72,18 @@ const MyAccount = () => {
       <div>
         <h1>{`${user.displayName}'s Account`}</h1>
         <h2>{faveRecipes.length > 0 && "Your Saved Recipes"}</h2>
-        {/* <ul>
-          {faveRecipes.map((recipe, index) => {
-            return <li key={index}>{recipe.title}</li>
-          })}
-          {console.log(faveRecipes)}
-        </ul> */}
         {faveRecipes.map((recipe, index) => {
-          // return <SavedRecipe key={index} recipe={recipe} />
           return (
             <button className='eachRecipe' type='button' key={index} onClick={viewSavedRecipe}>
+              {recipe.title}
+            </button>
+          )
+        })}
+
+        <h2>{faveRecipes.length > 0 && "Your Added Recipes"}</h2>
+        {userRecipes.map((recipe, index) => {
+          return (
+            <button className='eachRecipe' type='button' key={index} onClick={viewAddedRecipe}>
               {recipe.title}
             </button>
           )
