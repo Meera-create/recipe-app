@@ -3,7 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
-const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients, missedIngredients }) => {
+const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients, missedIngredients, scrollToRecipe, clickHandler}) => {
 
   const selectRecipe = async (event) => {
      event.preventDefault();
@@ -38,10 +38,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
   const filteredRecipes = cuisineType
     ? recipes.filter(recipe => recipe.cuisines.includes(cuisineType))
       : recipes;
-    
-
-
-
+  
   return (
     <div className="recipesAll">
       {search && <h1>Here is a list of recipes that match your search!</h1>}
@@ -54,6 +51,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
                       key={recipe.id}
                       onClick={(e) => {
                           selectRecipe(e)
+                          // clickHandler();
                           setMissedIngredients(recipe)
                       }}
                    >
