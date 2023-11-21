@@ -5,7 +5,11 @@ import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_recipe-finder-form.scss';
 
+<<<<<<< HEAD
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe}) => {
+=======
+const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe, setRandomSearch }) => {
+>>>>>>> fd78a8a79d10539dae6401ece3b619d00c5d9fd6
   const initialState = {
     alert: {
       message: "",
@@ -71,6 +75,23 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     }
   };
 
+  const getRandomRecipes = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.get("https://api.spoonacular.com/recipes/random?number=10", {
+        headers: {
+          "x-api-key": apiConfig.apiKey,
+        },
+      });
+      setSearch(true);
+      setRecipes(data.recipes)
+      setRandomSearch(true);
+      toast.success("Here are your random recipes!");
+    } catch (error) {
+      toast.error("There was an error getting the recipes");
+    }
+  }
+
   return (
     <div className="form">
       <Toaster />
@@ -89,7 +110,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
           <label>Select Cuisine Type</label>
           <select value={cuisineType} onChange={handleCuisineChange}>
             <option value="">All Cuisines</option>
-            <option value="italian">African</option>
+            <option value="african">African</option>
             <option value="asian">Asian</option>
             <option value="american">American</option>
             <option value="british">British</option>
@@ -115,7 +136,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             <option value="southern">Southern</option>
             <option value="spanish">Spanish</option>
             <option value="thai">Thai</option>
-            <option value="vivatnamese">Vietnamese</option>
+            <option value="vietnamese">Vietnamese</option>
           
           </select>
         </div>
@@ -123,6 +144,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
        
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
         <button type="button" onClick={handleSubmit}>Search</button>
+        <button type="button" onClick={getRandomRecipes}>Get Random Recipes</button>
       </form>
     </div>
   );

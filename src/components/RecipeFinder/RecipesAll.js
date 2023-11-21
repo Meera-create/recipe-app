@@ -6,7 +6,7 @@ import '../../styles/components/_recipes-all.scss';
 const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients, missedIngredients }) => {
 
   const selectRecipe = async (event) => {
-    event.preventDefault();
+     event.preventDefault();
     const recipeId = event.target.value;
     try {
       const { data } = await axios.get(
@@ -52,9 +52,9 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
                       className="eachRecipe"
                       value={recipe.id}
                       key={recipe.id}
-                      onClick={() => {
-                          selectRecipe();
-                          setMissedIngredients(recipe);
+                      onClick={(e) => {
+                          selectRecipe(e)
+                          setMissedIngredients(recipe)
                       }}
                    >
          

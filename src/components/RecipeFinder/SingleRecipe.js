@@ -68,7 +68,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) =>
             ))}
                          
                           missing items:{missingFoodItems.map((fooditem, index) => (
-                              <li kry={index}>{fooditem}</li>
+                              <li key={index}>{fooditem}</li>
                           ))}
                   
              
