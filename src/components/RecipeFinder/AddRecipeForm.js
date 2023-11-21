@@ -118,19 +118,32 @@ const AddRecipeForm = () => {
           name='title' 
           value={fields.title} 
           onChange={handleFieldChange}
-          required
         />
         <br />
         <br />
         <label htmlFor='ingredient'>Ingredients: </label>
-        <input id='ingredient' name='ingredient' type='text' placeholder='Add ingredients' value={ingredient} onChange={handleIngredientChange} required/>
+        <input  
+          id='ingredient' 
+          name='ingredient' 
+          type='text' 
+          placeholder='Add ingredients' 
+          value={ingredient} 
+          onChange={handleIngredientChange} 
+        />
         <button type='submit' onClick={handleAddIngredient}>Add</button>
         <button type='button' onClick={handleSaveIngredients}>Save Ingredients</button>
         <br />
         <br />
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
         <label htmlFor='instruction'>Instructions: </label>
-        <input id='instruction' name='instruction' type='text' placeholder='Add instructions' value={instruction} onChange={handleInstructionChange} required/>
+        <input 
+          id='instruction' 
+          name='instruction' 
+          type='text' 
+          placeholder='Add instructions' 
+          value={instruction} 
+          onChange={handleInstructionChange} 
+        />
         <button type='submit' onClick={handleAddInstruction}>Add</button>
         <button type='button' onClick={handleSaveInstructions}>Save Instructions</button>
         <br />
@@ -143,7 +156,6 @@ const AddRecipeForm = () => {
           name='readyInMinutes' 
           value={fields.readyInMinutes} 
           onChange={handleFieldChange}
-          required
         />
         <br />
         <br />
