@@ -5,11 +5,7 @@ import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_recipe-finder-form.scss';
 
-<<<<<<< HEAD
-const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe}) => {
-=======
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe, setRandomSearch }) => {
->>>>>>> fd78a8a79d10539dae6401ece3b619d00c5d9fd6
   const initialState = {
     alert: {
       message: "",
@@ -85,6 +81,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
       });
       setSearch(true);
       setRecipes(data.recipes)
+      console.log(data.recipes);
       setRandomSearch(true);
       toast.success("Here are your random recipes!");
     } catch (error) {

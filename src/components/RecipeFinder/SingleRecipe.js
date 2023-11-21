@@ -34,10 +34,15 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) =>
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
 
-
-    const missingFoodItems = missedIngredients.missedIngredients.map((val) => (
-            val.name
+    let missingFoodItems;
+    if (ingredientsList) {
+      missingFoodItems = missedIngredients.missedIngredients.map((val) => (
+        val.name
     ))
+    } else {
+      missingFoodItems = [];
+    }
+
     // console.log(missedIngredients,'RECIPE')
     // console.log(missedIngredients.missedIngredients.map((value)=>(value.name)),'MISED INGREDIENTS')
     // console.log(missingFoodItems,'MISSING FOOD ITEMS ')
@@ -46,54 +51,33 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) =>
   return (
     <div className="single_recipe">
       <Toaster />
-          <h1>Your recipe</h1>
-
-          <div className="clicked-recipe">
-              <h2>{extractedRecipe.title}</h2>
-
-              <div className="full-recipe">
-                  
-            <div >
-                <img className="image" alt="pic of food"  src={extractedRecipe.image} />
-                  </div> 
-                  
-      <div className="ingredients" >
-        <h3>Ingredients:</h3>
-        <ul>
-          {unlistedIngredients &&
-                              unlistedIngredients.map((ingredient,index) => (
-                
-                                  
-                    <li key={index}>{ingredient.original}</li> 
+      <h1>Your recipe</h1>
+      <div className="clicked-recipe">
+        <h2>{extractedRecipe.title}</h2>
+        <div className="full-recipe">    
+          <div>
+            <img className="image" alt="pic of food"  src={extractedRecipe.image} />
+          </div>     
+          <div className="ingredients" >
+            <h3>Ingredients:</h3>
+            <ul>
+              {unlistedIngredients && unlistedIngredients.map((ingredient,index) => (
+                <li key={index}>{ingredient.original}</li> 
+              ))}          
+              {ingredientsList && "missing items:"} {missingFoodItems.map((fooditem, index) => (
+                <li key={index}>{fooditem}</li>
             ))}
-                         
-                          missing items:{missingFoodItems.map((fooditem, index) => (
-                              <li key={index}>{fooditem}</li>
-                          ))}
-                  
-             
-
               <h3>Instructions:</h3>
-                  {parse(`${extractedRecipe.instructions}`)}
-                  
-                          <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
-                          </ul>
-              
-                  </div>
-                  
-                  </div>
-                      
-       
-          
-          
-      <button className="save-button" type="button" onClick={saveRecipe}>
-        Save
-              </button>
-              
+              {parse(`${extractedRecipe.instructions}`)}
+              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+            </ul>
+          </div>
+        </div>
+        <button className="save-button" type="button" onClick={saveRecipe}>
+          Save
+        </button>  
       </div >
-      </div>
-  
-              
+    </div>      
   );
 };
 
