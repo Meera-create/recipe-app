@@ -24,7 +24,7 @@ const RecipeHomePage = () => {
       
       />
       {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}
-      setMissedIngredients={setMissedIngredients} 
+      setMissedIngredients={setMissedIngredients}  missedIngredients={missedIngredients}
       />}
       {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} ingredientsList={ingredientsList} missedIngredients={missedIngredients} />}
     </div>

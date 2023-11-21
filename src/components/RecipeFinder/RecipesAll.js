@@ -3,7 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
-const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients }) => {
+const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients, missedIngredients }) => {
 
   const selectRecipe = async (event) => {
     event.preventDefault();
@@ -55,7 +55,8 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
                       onClick={selectRecipe && setMissedIngredients(recipe.missedIngredients.map((missed) => (
                     missed.name)))}
           >
-                {recipe.title}
+                      {recipe.title}
+                      {missedIngredients}
                 
                 {/* {recipe.missedIngredients[0].name}
                 {recipe.missedIngredients[1].name} */}
