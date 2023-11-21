@@ -8,8 +8,8 @@ import '../../styles/components/_single-recipe.scss'
 
 
 
-const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
-    // console.log("test");
+const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) => {
+   
     const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
@@ -34,6 +34,15 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
 
+
+    const missingFoodItems = missedIngredients.missedIngredients.map((val) => (
+            val.name
+    ))
+    // console.log(missedIngredients,'RECIPE')
+    // console.log(missedIngredients.missedIngredients.map((value)=>(value.name)),'MISED INGREDIENTS')
+    // console.log(missingFoodItems,'MISSING FOOD ITEMS ')
+
+
   return (
     <div className="single_recipe">
       <Toaster />
@@ -52,37 +61,38 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
         <h3>Ingredients:</h3>
         <ul>
           {unlistedIngredients &&
-                              unlistedIngredients.map((ingredient, index) => (
-                <>
+                              unlistedIngredients.map((ingredient,index) => (
+                
                                   
-                    <li key={index}>{ingredient.original}</li>                           <li key={index}>to buy:{ingredientName} </li>
-            </>
-                  
-                
-                
+                    <li key={index}>{ingredient.original}</li> 
             ))}
-        </ul>
-        </div>
+                         
+                          missing items:{missingFoodItems.map((fooditem, index) => (
+                              <li kry={index}>{fooditem}</li>
+                          ))}
                   
-              <div className="instructions">
-              </div>
+             
 
               <h3>Instructions:</h3>
                   {parse(`${extractedRecipe.instructions}`)}
                   
-              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+                          <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+                          </ul>
               
                   </div>
                   
                   </div>
                       
-          </div>
+       
           
           
       <button className="save-button" type="button" onClick={saveRecipe}>
         Save
-      </button>
-              </div>
+              </button>
+              
+      </div >
+      </div>
+  
               
   );
 };

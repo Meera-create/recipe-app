@@ -3,7 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
-const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
+const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients, missedIngredients }) => {
 
   const selectRecipe = async (event) => {
     event.preventDefault();
@@ -37,24 +37,31 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
   // Filter recipes by cuisineType
   const filteredRecipes = cuisineType
     ? recipes.filter(recipe => recipe.cuisines.includes(cuisineType))
-    : recipes;
+      : recipes;
+    
+
+
 
   return (
     <div className="recipesAll">
       {search && <h1>Here is a list of recipes that match your search!</h1>}
-      {/* Assuming you have an 'alert' state somewhere */}
-      {/* {alert && <Alert message={alert.message} />} */}
-
+  
       <ul className="recipes">
-        {filteredRecipes.map((recipe) => (
-          <button
-            className="eachRecipe"
-            value={recipe.id}
-            key={recipe.id}
-            onClick={selectRecipe}
-          >
-            {recipe.title}
-            
+              {filteredRecipes.map((recipe) => (
+                  <button
+                      className="eachRecipe"
+                      value={recipe.id}
+                      key={recipe.id}
+                      onClick={() => {
+                          selectRecipe();
+                          setMissedIngredients(recipe);
+                      }}
+                   >
+         
+         
+                {recipe.title}
+           
+             
           </button>
         ))}
       </ul>
