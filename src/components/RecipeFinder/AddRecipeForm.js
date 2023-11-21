@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../../Context/AuthContext';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../config/firebase';
-import { v4 as uuidv4 } from 'uuid';
 import IngredientsList from './IngredientsList';
 import InstructionsList from './InstructionsList';
 import toast, { Toaster } from 'react-hot-toast';
@@ -123,14 +122,28 @@ const AddRecipeForm = () => {
         <br />
         <br />
         <label htmlFor='ingredient'>Ingredients: </label>
-        <input id='ingredient' name='ingredient' type='text' placeholder='Add ingredients' value={ingredient} onChange={handleIngredientChange} />
+        <input  
+          id='ingredient' 
+          name='ingredient' 
+          type='text' 
+          placeholder='Add ingredients' 
+          value={ingredient} 
+          onChange={handleIngredientChange} 
+        />
         <button type='submit' onClick={handleAddIngredient}>Add</button>
         <button type='button' onClick={handleSaveIngredients}>Save Ingredients</button>
         <br />
         <br />
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
         <label htmlFor='instruction'>Instructions: </label>
-        <input id='instruction' name='instruction' type='text' placeholder='Add instructions' value={instruction} onChange={handleInstructionChange} />
+        <input 
+          id='instruction' 
+          name='instruction' 
+          type='text' 
+          placeholder='Add instructions' 
+          value={instruction} 
+          onChange={handleInstructionChange} 
+        />
         <button type='submit' onClick={handleAddInstruction}>Add</button>
         <button type='button' onClick={handleSaveInstructions}>Save Instructions</button>
         <br />
@@ -142,7 +155,7 @@ const AddRecipeForm = () => {
           id='readyInMinutes' 
           name='readyInMinutes' 
           value={fields.readyInMinutes} 
-          onChange={handleFieldChange} 
+          onChange={handleFieldChange}
         />
         <br />
         <br />

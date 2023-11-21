@@ -8,6 +8,7 @@ import '../../styles/pages/_recipe-home-page.scss'
 const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(false);
+  const [randomSearch, setRandomSearch] = useState(false);
 
   // const [recipeID, setRecipeID] = useState("");
   // const [singleRecipe, setSingleRecipe] = useState([]);
@@ -19,9 +20,10 @@ const RecipeHomePage = () => {
   return (
     <div className='recipe-homepage'>
       <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList} 
-        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe}/>
-        {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}/>}
+        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe} setRandomSearch={setRandomSearch}/>
+        {ingredientsList.length >= 1 || randomSearch ? <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}/> : null}
       {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} />}
+      {/* {randomSearch && <SingleRecipe extractedRecipe={extractedRecipe} />} */}
     </div>
   );
 }
