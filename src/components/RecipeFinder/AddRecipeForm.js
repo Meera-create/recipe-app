@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../../Context/AuthContext';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../config/firebase';
-import { v4 as uuidv4 } from 'uuid';
 import IngredientsList from './IngredientsList';
 import InstructionsList from './InstructionsList';
 import toast, { Toaster } from 'react-hot-toast';
