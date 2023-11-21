@@ -3,7 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import '../../styles/components/_recipes-all.scss';
 
-const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
+const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissedIngredients }) => {
 
   const selectRecipe = async (event) => {
     event.preventDefault();
@@ -17,7 +17,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
           },
         });
 
-      console.log(data, "fefehfkahe");
+    
       console.log(data.sourceUrl, 'URL WEBSITE');
 
       const { data: recipeData } = await axios.get(
@@ -46,16 +46,32 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType }) => {
       {/* {alert && <Alert message={alert.message} />} */}
 
       <ul className="recipes">
-        {filteredRecipes.map((recipe) => (
-          <button
-            className="eachRecipe"
-            value={recipe.id}
-            key={recipe.id}
-            onClick={selectRecipe}
-          >
-            {recipe.title}
+              {filteredRecipes.map((recipe) => (
             
-          </button>
+          <button
+                      className="eachRecipe"
+                      value={recipe.id}
+                      key={recipe.id}
+                      onClick={selectRecipe && setMissedIngredients(recipe.missedIngredients.map((missed) => (
+                    missed.name)))}
+          >
+                {recipe.title}
+                
+                {/* {recipe.missedIngredients[0].name}
+                {recipe.missedIngredients[1].name} */}
+                {/* {setMissedIngredients(recipe.missedIngredients.map((missed) => (
+                    missed.name)))} */}
+                {/* {recipe.missedIngredients.map((missing) => (
+                    <li>{missing.name}</li>
+                ))} */}
+                {/* //this works */}
+              
+                {recipe.id}
+                {/* missing:
+                {missedIngredients}
+                */}
+            
+            </button> 
         ))}
       </ul>
     </div>

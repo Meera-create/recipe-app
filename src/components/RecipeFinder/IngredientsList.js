@@ -2,6 +2,7 @@ import React from 'react';
 import Ingredient from './Ingredient';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_ingredients-list.scss'
+// import SingleRecipe from './SingleRecipe';
 
 const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
 
@@ -17,7 +18,8 @@ const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
     <div>
       <Toaster />
       {ingredientsList.map((ingredient, index) => {
-        return <Ingredient ingredientName={ingredient} key={index} removeIngredient={handleRemoveIngredient} />
+        return <Ingredient ingredientName={ingredient} key={index} removeIngredient={handleRemoveIngredient} /> 
+          
       })}
     </div>
   );

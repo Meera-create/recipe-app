@@ -5,7 +5,19 @@ import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_recipe-finder-form.scss';
 
-const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe}) => {
+const RecipeFinderForm = ({
+  setRecipes,
+  setSearch,
+  ingredientsList,
+  setIngredientsList,
+  setExtractedRecipe,
+  setMissedIngredients,
+  extractedRecipe,
+  missedIngredients
+
+
+
+}) => {
   const initialState = {
     alert: {
       message: "",
@@ -35,10 +47,12 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 
   const handleCuisineChange = (e) => {
     setCuisineType(e.target.value);
+    console.log(e)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     console.log("ingredientsList:", ingredientsList);
   console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
@@ -56,14 +70,23 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
           },
         });
 
+        console.log(data);
         setRecipes(data);
+        
+        
+        // console.log('MISSED INGREDIENTS:')
+        // console.log(missedIngredients);
+        
         setSearch(true);
         setExtractedRecipe({});
+        console.log(extractedRecipe)
+        
         setSearch(true);
         toast.success("Recipes found!");
       } catch (error) {
         console.log(error);
         setExtractedRecipe({});
+        
         toast.error("No recipes found :(");
       }
     } else {

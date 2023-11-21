@@ -9,10 +9,8 @@ const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(false);
 
-  // const [recipeID, setRecipeID] = useState("");
-  // const [singleRecipe, setSingleRecipe] = useState([]);
-  // const [index, setIndex] = useState();
-  // const [url, setURL] = useState();
+  const [missedIngredients, setMissedIngredients] = useState([]);
+
   const [extractedRecipe, setExtractedRecipe] = useState({});
   const [ingredientsList, setIngredientsList] = useState([]);
   
@@ -20,9 +18,15 @@ const RecipeHomePage = () => {
   return (
     <div className='recipe-homepage'>
       <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList} 
-        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe}/>
-        {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}/>}
-      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe}/>}
+        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe}
+        setMissedIngredients={setMissedIngredients} missedIngredients={missedIngredients}
+        extractedRecipe={extractedRecipe}
+      
+      />
+      {ingredientsList.length >= 1 && <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe}
+      setMissedIngredients={setMissedIngredients} 
+      />}
+      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} ingredientsList={ingredientsList} missedIngredients={missedIngredients} />}
     </div>
   );
 }

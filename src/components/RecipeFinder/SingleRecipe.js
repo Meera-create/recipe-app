@@ -5,13 +5,14 @@ import { db } from '../../config/firebase';
 import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss'
+const SingleRecipe = ({
+    extractedRecipe,
+    ingredientsList,
+    missedIngredients
 
-
-
-const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
+    }) => {
     // console.log("test");
     const { user } = useContext(Context);
-
     const saveRecipe = async (e) => {
         e.preventDefault();
         console.log(extractedRecipe);
@@ -27,64 +28,55 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList }) => {
             toast.error("There was a problem saving the recipe - please try again later");
         }
     };
-
   const unlistedIngredients =
     extractedRecipe.extendedIngredients &&
     extractedRecipe.extendedIngredients.filter(
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
-
   return (
     <div className="single_recipe">
       <Toaster />
           <h1>Your recipe</h1>
-
           <div className="clicked-recipe">
               <h2>{extractedRecipe.title}</h2>
-
               <div className="full-recipe">
-                  
             <div >
                 <img className="image" alt="pic of food"  src={extractedRecipe.image} />
-                  </div> 
-                  
-      <div className="ingredients" >
+            </div>
+      <div >
         <h3>Ingredients:</h3>
         <ul>
           {unlistedIngredients &&
                               unlistedIngredients.map((ingredient, index) => (
-                <>
-                                  
-                    <li key={index}>{ingredient.original}</li>                           <li key={index}>to buy:{ingredientName} </li>
-            </>
-                  
-                
-                
-            ))}
-        </ul>
-        </div>
-                  
-              <div className="instructions">
-              </div>
+            <ul>
+                                      <li key={index}>{ingredient.original}
+                                          </li>
+                {/* <li key>{ingredientsList}</li> */}
+            </ul>
 
+        
+            ))}
+        <ul>
+                              <h3>missing ingredients:{missedIngredients}</h3>
+                              
+        </ul>
+
+        </ul>
+              </div>
               <h3>Instructions:</h3>
                   {parse(`${extractedRecipe.instructions}`)}
-                  
-              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
-              
-                  </div>
-                  
-                  </div>
-                      
+                  <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+                  {/* <h3>Missed ingredients:{ingredientsList}</h3>
+                 */}
+    
+                 
+    
+              </div>
           </div>
-          
-          
       <button className="save-button" type="button" onClick={saveRecipe}>
         Save
       </button>
-              </div>
-              
+    </div>
   );
 };
-
 export default SingleRecipe;
