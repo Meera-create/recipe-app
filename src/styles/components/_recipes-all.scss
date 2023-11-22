@@ -2,6 +2,37 @@
 @use '../../styles/abstracts/mixins';
 
 
-h2{
-    margin-left:functions.spacing('margin')
-}
+  
+    .recipes {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+  
+      .recipeItem {
+        margin: 10px;
+      }
+  
+      .eachRecipe {
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+  
+        .recipeThumbnail {
+          width: 100px; // Adjust the width as needed
+          height: 100px; // Adjust the height as needed
+          object-fit: cover;
+          margin-bottom: 5px;
+        }
+  
+        .recipeTitle {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  
+  
