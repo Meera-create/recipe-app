@@ -8,6 +8,8 @@ import MyAccount from './MyAccount.js';
 import RecipeHomePage from './RecipeFinder/RecipeHomePage.js';
 import Protected from './Protected.js';
 import AddRecipeForm from './RecipeFinder/AddRecipeForm.js';
+import Login from './Login.js';
+import CreateAccount from './CreateAccount.js';
 
 const App = () => {
 
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeHomePage />} />
           <Route path="/my-account" element={<Protected><MyAccount /></Protected>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<CreateAccount />} />
           {/* <Route path="/single-recipe" element={<SingleRecipe />} /> */}
           <Route path="/add-recipe" element={<Protected><AddRecipeForm /></Protected>} />
         </Routes>

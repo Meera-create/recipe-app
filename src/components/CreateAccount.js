@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../config/firebase";
 import Alert from "./RecipeFinder/Alert";
 import '../styles/components/_create-account.scss'
@@ -21,6 +21,7 @@ const CreateAccount = () => {
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -53,7 +54,7 @@ const CreateAccount = () => {
     <div>
       <Alert message={alert.message} success={alert.isSuccess} />
       <form onSubmit={handleSignUp} className="create-account">
-
+        {pathname === "/sign-up" && <h2>Create a new Account</h2>}
         <div className="box-input">
         <label htmlFor="username-signup">
           Username: 
