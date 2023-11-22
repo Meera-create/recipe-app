@@ -20,11 +20,11 @@
         text-align: center;
   
         .recipeThumbnail {
-          width: 100px; // Adjust the width as needed
-          height: 100px; // Adjust the height as needed
-          object-fit: cover;
-          margin-bottom: 5px;
-        }
+            width: 150px;
+            height: 100px;
+            border-radius: 8px; 
+          }
+          
   
         .recipeTitle {
           display: block;
