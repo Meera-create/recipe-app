@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { Context } from '../../Context/AuthContext';
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from '../../config/firebase';
@@ -8,7 +8,7 @@ import '../../styles/components/_single-recipe.scss'
 
 
 
-const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) => {
+const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, ref) => {
    
     const { user } = useContext(Context);
 
@@ -49,7 +49,7 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) =>
 
 
   return (
-    <div className="single_recipe">
+    <div ref={ref} className="single_recipe">
       <Toaster />
       <h1>Your recipe</h1>
       <div className="clicked-recipe">
@@ -81,4 +81,4 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}) =>
   );
 };
 
-export default SingleRecipe;
+export default forwardRef(SingleRecipe);

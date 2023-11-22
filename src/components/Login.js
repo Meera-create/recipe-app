@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { auth } from "../config/firebase";
 import Alert from "./RecipeFinder/Alert";
 import '../styles/components/_login.scss'
@@ -20,6 +20,8 @@ const Login = () => {
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  console.log(pathname);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -52,9 +54,9 @@ const Login = () => {
     <div className="login">
       <Alert message={alert.message} success={alert.isSuccess} />
       <form className="login-form" onSubmit={handleLogin}>
-        
+        {pathname === "/login" && <h2>Login</h2>}
         <div className="box">
-      <label htmlFor="email">
+          <label htmlFor="email">
           Email: </label>
           <input 
             id="email" 

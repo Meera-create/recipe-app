@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import RecipeFinderForm from './RecipeFinderForm';
 import RecipeAll from './RecipesAll';
 import SingleRecipe from './SingleRecipe';
@@ -19,14 +19,21 @@ const RecipeHomePage = () => {
 
   // added below:
   const [missedIngredients, setMissedIngredients] = useState([]);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [extractedRecipe]);
+
   
 
   return (
     <div className='recipe-homepage'>
       <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList} 
         setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe} setRandomSearch={setRandomSearch}/>
-        {ingredientsList.length >= 1 || randomSearch ? <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe} setMissedIngredients={setMissedIngredients} missedIngredients={missedIngredients}/> : null}
-      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} missedIngredients={missedIngredients}/>}
+        {ingredientsList.length >= 1 || randomSearch ? <RecipeAll recipes={recipes} search={search} setExtractedRecipe={setExtractedRecipe} setMissedIngredients={setMissedIngredients} missedIngredients={missedIngredients} /> : null}
+      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} missedIngredients={missedIngredients} ref={ref} />}
     </div>
   );
 }

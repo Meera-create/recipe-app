@@ -8,48 +8,49 @@ import image from '../../src/styles/images/the pantry (1).jpg'
 const NavBar = () => {
   const { user } = useContext(Context);
 
-  return (
-    <div className="navbar">
-      {user && (
-        <div className="buttons">
-          <div className="boxes">
-            <Link reloadDocument to="/recipe-form">
-              <img alt="logo" src={image} />
-            </Link>
+  if (user) {
+    return (
+      <div className="navbar">
+          <div className="buttons">
+            <div className="boxes">
+              <Link reloadDocument to="/recipe-form">
+                <img alt="logo" src={image} />
+              </Link>
+            </div>
+            <div className="boxes2">
+              <button type="button" className="add-recipe">
+                <NavLink to="add-recipe">Add Recipe</NavLink>
+              </button>
+              <button type="button"className="my-account">
+                <NavLink to="my-account">My Account</NavLink>
+              </button>
+              <Logout />
+            </div>
           </div>
-          <div className="boxes2">
-            <button type="button" className="add-recipe">
-              <NavLink to="add-recipe">Add Recipe</NavLink>
-            </button>
-            <button type="button"className="my-account">
-              <NavLink to="my-account">My Account</NavLink>
-            </button>
-            <Logout />
+      </div>
+    )
+  } else {
+    return (
+      <div className="navbar">
+          <div className="buttons">
+            <div className="boxes">
+              <Link reloadDocument to="/recipe-form">
+                <img alt="logo" src={image} />
+              </Link>
+            </div>
+            <div className="boxes2">
+              <button type="button" className="login">
+                <NavLink to="login">Login</NavLink>
+              </button>
+              <button type="button"className="sign-up">
+                <NavLink to="sign-up">Sign Up</NavLink>
+              </button>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-
-
-    // <div className="navbar">
-    //   <Link reloadDocument to="/recipe-form">
-    //     <img alt="logo" src={image} />
-    //     {/* <FaPoop /> */}
-    //   </Link>
-    //   {user && (
-    //     <ul className="navbar_buttons">
-    //       <li className="account_button">
-    //         <button type="button"className="my-account">
-    //           <NavLink to="my-account">My Account</NavLink>
-    //         </button>
-    //       </li>
-    //       <li className="logout_button">
-    //         <Logout />
-    //       </li>
-    //     </ul>
-    //   )}
-    // </div>
-  )
+      </div>
+    )
+  }
+  
 };
 
 export default NavBar;
