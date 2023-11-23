@@ -3,7 +3,7 @@ import Ingredient from './Ingredient';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_ingredients-list.scss'
 
-const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
+const IngredientsList = ({ ingredientsList, setIngredientsList, savedIngredientNumber }) => {
 
   const handleRemoveIngredient = (e) => {
     e.preventDefault();
@@ -17,7 +17,10 @@ const IngredientsList = ({ ingredientsList, setIngredientsList }) => {
     <div>
       <Toaster />
       {ingredientsList.map((ingredient, index) => {
-        return <Ingredient ingredientName={ingredient} key={index} removeIngredient={handleRemoveIngredient} />
+        console.log(savedIngredientNumber)
+        console.log(index)
+        return <Ingredient ingredientName={ingredient} key={index} index={index} removeIngredient={handleRemoveIngredient}
+          savedIngredientNumber={savedIngredientNumber} />
       })}
     </div>
   );
