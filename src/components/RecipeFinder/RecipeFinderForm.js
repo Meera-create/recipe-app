@@ -43,8 +43,8 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
   console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
       try {
-        const ingredientsSearch = ingredientsList.join(",+");
-        let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsSearch}&number=20`;
+        const ingredientsSearch = ingredientsList.join(",");
+        let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredientsSearch}&number=20&ignorePantry=true`;
 
         if (cuisineType) {
           apiUrl += `&cuisine=${cuisineType}`;
@@ -55,8 +55,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             "x-api-key": apiConfig.apiKey,
           },
         });
-
-        setRecipes(data);
+        setRecipes(data.results);
         setSearch(true);
         setExtractedRecipe({});
         setSearch(true);
