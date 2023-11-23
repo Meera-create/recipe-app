@@ -1,10 +1,10 @@
 import React from 'react'
 import '../../styles/components/_ingredient.scss'
 
-const Instruction = ({ instruction, removeInstruction }) => {
+const Instruction = ({ instruction, removeInstruction,color }) => {
 
   return (
-    <p>{instruction} <button className='instruction-remove' style={{color:"red"}} onClick={removeInstruction} type="button">x</button></p>
+    <p>{instruction} <button className='instruction-remove' style={color} onClick={removeInstruction} type="button">x</button></p>
   )
 }
 
