@@ -19,7 +19,7 @@ const MyAccount = () => {
     querySnapshot.forEach((doc) => {
       if (doc.data().uid === user.uid) {
         // console.log(`${doc.id} => ${doc.data().uid}`);
-        console.log(doc.data().recipe)
+        // console.log(doc.data().recipe)
         setFaveRecipes(prevState => {
             return [...prevState, doc.data().recipe];    
         });
@@ -29,10 +29,10 @@ const MyAccount = () => {
 
   const getUserRecipes = async () => {
     const querySnapshot = await getDocs(collection(db, "userRecipes"));
-    console.log(querySnapshot);
+    // console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       if (doc.data().uid === user.uid) {
-        console.log(doc.data().recipe)
+        // console.log(doc.data().recipe)
         setUserRecipes(prevState => {
           return [...prevState, doc.data().recipe];
         });
@@ -50,7 +50,7 @@ const MyAccount = () => {
     e.preventDefault();
     const recipeName = e.target.innerText;
     const recipeIndex = faveRecipes.findIndex(recipe => recipe.title === recipeName);
-    console.log(recipeIndex);
+    // console.log(recipeIndex);
     setSelectedRecipe(faveRecipes[recipeIndex]);
   }
 
@@ -58,15 +58,15 @@ const MyAccount = () => {
     e.preventDefault();
     const recipeName = e.target.innerText;
     const recipeIndex = userRecipes.findIndex(recipe => recipe.title === recipeName);
-    console.log(recipeIndex);
+    // console.log(recipeIndex);
     setSelectedRecipe(userRecipes[recipeIndex]);
   }
 
   if (isLoading === true) {
-    console.log("Loading");
+    // console.log("Loading");
     return <div>This is loading...</div>
   } else {
-    console.log("Loaded");
+    // console.log("Loaded");
     // console.log(faveRecipes);
     return (
       <div>
@@ -88,7 +88,7 @@ const MyAccount = () => {
             </button>
           )
         })}
-        {selectedRecipe.title !== undefined && <SavedRecipe recipe={selectedRecipe} />}
+        {selectedRecipe?.title !== undefined && <SavedRecipe recipe={selectedRecipe} />}
       </div>
     )
   }
