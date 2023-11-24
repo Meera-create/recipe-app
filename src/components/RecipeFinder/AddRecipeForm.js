@@ -28,9 +28,9 @@ const AddRecipeForm = () => {
   const [instruction, setInstruction] = useState('');
   const [instructionsList, setInstructionsList] = useState([]);
 
- 
+ //to change colours of buttons:
   const [savedIngredientNumber, setSavedIngredientNumber] = useState();
-
+  const [savedRecipeInstruction, setSavedRecipeInstruction] = useState();
 
 
   const handleFieldChange = (event) => {
@@ -126,8 +126,7 @@ const AddRecipeForm = () => {
           value={fields.title} 
           onChange={handleFieldChange}
         />
-        <br />
-        <br />
+        
         <label htmlFor='ingredient'>Ingredients: </label>
         <input  
           id='ingredient' 
@@ -157,9 +156,13 @@ const AddRecipeForm = () => {
           onChange={handleInstructionChange} 
         />
         <button type='submit' onClick={handleAddInstruction}>Add</button>
-        <button type='button' onClick={handleSaveInstructions}>Save Instructions</button>
         
-        {instructionsList.length >= 1 && <><InstructionsList instructionsList={instructionsList} setInstructionsList={setInstructionsList} /></>}
+        <button type='button' onClick={(e) => {
+          handleSaveInstructions(e)
+          setSavedRecipeInstruction(instructionsList.length-1)
+        }}>Save Instructions</button>
+        
+        {instructionsList.length >= 1 && <><InstructionsList instructionsList={instructionsList} setInstructionsList={setInstructionsList} savedRecipeInstruction={savedRecipeInstruction} /></>}
         <label htmlFor='readyInMinutes'>Time to cook (minutes): </label>
         <input 
           type='number' 

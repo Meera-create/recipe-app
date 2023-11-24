@@ -55,7 +55,7 @@ const MyAccount = () => {
     getUserFaves();
     getUserRecipes();
     setIsLoading(false);
-  }, [getUserFaves, getUserRecipes]);
+  }, [getUserFaves, getUserRecipes,faveRecipes.length]);
   
   const viewSavedRecipe = (recipe) => {
     setSelectedRecipe(recipe);
