@@ -78,7 +78,10 @@ const MyAccount = () => {
 
   if (isLoading === true) {
     return <div>This is loading...</div>;
+    // console.log("Loading");
   } else {
+    // console.log("Loaded");
+    // console.log(faveRecipes);
     return (
       <div className="saved-recipes">
         <h1>{`${user.displayName}'s Account`}</h1>
@@ -125,7 +128,7 @@ const MyAccount = () => {
           ))}
         </ul>
 
-        {selectedRecipe.title !== undefined && (
+        {selectedRecipe?.title !== undefined && (
           <>
             <SavedRecipe recipe={selectedRecipe} ref={ref}/>
           </>

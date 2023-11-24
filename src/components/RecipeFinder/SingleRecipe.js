@@ -16,8 +16,9 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, re
         try {
             await setDoc(doc(db, "recipes", `${extractedRecipe.id} - ${user.uid}`), {
                 uid: user.uid,
-                recipe: extractedRecipe,
-                createdAt: serverTimestamp()
+                recipe: {...extractedRecipe, savedRecipe: true},
+                createdAt: serverTimestamp(),
+                
             });
             toast.success("Recipe saved!")
         } catch (error) {

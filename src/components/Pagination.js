@@ -18,4 +18,4 @@ const Pagination = ({ totalPosts, postsPerPage, setCurrentPage, currentPage }) =
   )
 }
 
-export default Pagination
+export default Pagination;

@@ -1,0 +1,20 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+.star-rating > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 1rem;
+  width: 1.25rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
+}
