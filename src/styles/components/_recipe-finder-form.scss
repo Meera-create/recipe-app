@@ -54,3 +54,57 @@ form.searchForm {
 .search-box {
     margin-bottom: 2rem;
 }
+
+input[type="text"],select {
+    margin-left: functions.spacing('medium');
+}
+
+.buttonsForForm {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+button.buttonform {
+    height: 3rem;
+    background-color:functions.color('buttons')
+}
+
+button.active{
+    background-color: functions.color('buttons');
+}
+
+h2{
+    font-size: 1rem;
+    margin-left:functions.spacing('medium');
+}
+ 
+.entire-form {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.random-recipe {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.main-form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -7,16 +7,19 @@ const Ingredient = ({ ingredientName, removeIngredient , index, savedIngredientN
 
   const determineColor = (index) => {
     if (index <= savedIngredientNumber) {
-      return 'green'
+      return 'color1'
+    } else {
+      return 'color2'
     }
     
   }
 
 
   return (
-    <p>{ingredientName} <button className={`ingredient-remove ${determineColor(index)}`} id='remove-ingredient' style={{ color: 'red' }} onClick={removeIngredient}
+    <p>{ingredientName} <button className={`ingredient-remove ${determineColor(index)}`} id='remove-ingredient' style={{ color: 'white' }} onClick={removeIngredient}
         type="button">x</button></p>
   )
 }
 
 export default Ingredient;
+

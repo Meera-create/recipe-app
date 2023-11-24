@@ -92,9 +92,15 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     <div className="form">
       <Toaster />
       <h1>Search for a recipe...</h1>
+      <h2> Type an ingredient into the search box, click ADD . Add as many as you like, then select SEARCH.
+        If no results appear, try removing one of your selected ingredients.
+      </h2>
       <form className="searchForm">
-        <div className="search-box">
-          <label>Type Ingredients to Search</label>
+          <div className="entire-form">
+          <div className="main-form">
+          <div className="search-box">
+          <label>Type Ingredient</label>
+          
           <input
             type="text"
             placeholder="Add ingredients"
@@ -135,12 +141,25 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             <option value="vietnamese">Vietnamese</option>
           
           </select>
-        </div>
-        <button type="submit" onClick={handleAddIngredient}>Add</button>
-       
-        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
-        <button type="button" onClick={handleSubmit}>Search</button>
-        <button type="button" onClick={getRandomRecipes}>Get Random Recipes</button>
+            </div>
+            <div className="form-buttons">
+        <button className="buttonform" type="submit" onClick={handleAddIngredient}>Add</button>
+            <button type="button" className="buttonform" onClick={handleSubmit}>Search</button>
+            </div>
+          
+            <div className="added-ingredients">
+              {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
+            </div>
+
+        
+          
+          </div>
+          <div className="random-recipe">
+            <h2>Or try out our RANDOM RECIPE button if you're not sure what to make!</h2>
+          <button type="button" className="buttonform" onClick={getRandomRecipes}>Get Random Recipes</button>
+          </div>
+          </div>
+      
       </form>
     </div>
   );
