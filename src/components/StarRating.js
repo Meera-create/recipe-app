@@ -4,12 +4,13 @@ import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/components/_star-rating.scss";
 
-const StarRating = ({ recipe }) => {
+const StarRating = ({ recipe, rating, setRating }) => {
 
+  // console.log(setRating);
   const { user } = useContext(Context);
 
-  const [hover, setHover] = useState(0);
-  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState();
+  // const [rating, setRating] = useState(0);
 
   const recipeRef = doc(db, "recipes", `${recipe.id} - ${user.uid}`);
 
@@ -19,14 +20,15 @@ const StarRating = ({ recipe }) => {
     if (recipe.rating !== undefined) {
       setRating(recipe.rating);
     }
-  }, [recipe, rating]);
+  }, [recipe, setRating]);
 
   const handleClick = async (starRating) => {
+    setRating(starRating);
     setDoc(recipeRef, {
       recipe: {
         rating: starRating
       },
-      rating: starRating,
+      // rating: starRating,
       uid: user.uid,
       updatedAt: serverTimestamp()
     }, { merge: true });
@@ -44,7 +46,7 @@ const StarRating = ({ recipe }) => {
               key={index}
               className={index <= (hover || rating) ? "on" : "off"}
               onClick={() => {
-                setRating(index);
+                // setRating(index);
                 handleClick(index);
               }}
               onMouseEnter={() => setHover(index)}
