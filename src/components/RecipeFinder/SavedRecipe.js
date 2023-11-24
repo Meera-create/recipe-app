@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import parse from 'html-react-parser';
+import "../../styles/components/_saved-recipe.scss";
 
-const SavedRecipe = ({ recipe }) => {
-  const buttonStyle = {
-    display: 'none',
-    visibility: 'hidden',
-    opacity: 0,
-    position: 'relative', // Change to 'relative' or remove this line
-  };
+const SavedRecipe = ({ recipe }, ref) => {
   
-
   return (
-    <div className="single_recipe">
+    <div ref={ref} className="single_recipe">
       <div className="clicked-recipe">
-        <button style={buttonStyle}>Hidden Button</button>
+        <button >Hidden Button</button>
 
         {recipe.image !== undefined && (
           <div>
@@ -27,7 +21,7 @@ const SavedRecipe = ({ recipe }) => {
           <h3>Ingredients:</h3>
           <ul>
             {recipe.extendedIngredients.map((ingredient, index) => (
-              <li key={index}>{ingredient.original}</li>
+              <li key={index}>{ingredient.original ? ingredient.original : ingredient}</li>
             ))}
           </ul>
         </div>
@@ -41,7 +35,4 @@ const SavedRecipe = ({ recipe }) => {
   );
 };
 
-export default SavedRecipe;
-
-
-
+export default forwardRef(SavedRecipe);
