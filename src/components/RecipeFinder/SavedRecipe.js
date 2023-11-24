@@ -17,6 +17,7 @@ const SavedRecipe = ({ recipe }) => {
             {recipe.savedRecipe && <StarRating recipe={recipe} />}
             <h3>Ingredients:</h3>
             <ul>
+              {console.log(recipe.extendedIngredients)}
               {recipe.extendedIngredients.map((ingredient, index) => (
                 <li key={index}>{ingredient.original}</li>
               ))}

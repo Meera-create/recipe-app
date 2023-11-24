@@ -13,11 +13,13 @@ const StarRating = ({ recipe }) => {
 
   const recipeRef = doc(db, "recipes", `${recipe.id} - ${user.uid}`);
 
+  // Look into setting the rating in a different area where the onClick for clicking on the saved recipe is rendered
+
   useEffect(() => {
     if (recipe.rating !== undefined) {
       setRating(recipe.rating);
     }
-  }, [recipe]);
+  }, [recipe, rating]);
 
   const handleClick = async (starRating) => {
     setDoc(recipeRef, {
