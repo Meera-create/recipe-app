@@ -79,7 +79,6 @@ const MyAccount = () => {
   if (isLoading === true) {
     return <div>This is loading...</div>;
     // console.log("Loading");
-    return <div>This is loading...</div>
   } else {
     // console.log("Loaded");
     // console.log(faveRecipes);
