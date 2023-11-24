@@ -3,7 +3,7 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Context } from '../Context/AuthContext';
 import { db } from '../config/firebase';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import SavedRecipe from './RecipeFinder/SavedRecipe';
 import '../styles/pages/_my-account.scss';
 
@@ -61,16 +61,16 @@ const MyAccount = () => {
     setSelectedRecipe(recipe);
   };
 
-  const saveRecipe = async (recipe) => {
-    const docRef = await addDoc(collection(db, "userRecipes"), {
-      uid: user.uid,
-      recipe,
-    });
+  // const saveRecipe = async (recipe) => {
+  //   const docRef = await addDoc(collection(db, "userRecipes"), {
+  //     uid: user.uid,
+  //     recipe,
+  //   });
 
-    console.log("Recipe saved with ID: ", docRef.id);
+  //   console.log("Recipe saved with ID: ", docRef.id);
 
-    setUserRecipes((prevState) => [...prevState, recipe]);
-  };
+  //   setUserRecipes((prevState) => [...prevState, recipe]);
+  // };
 
   if (isLoading === true) {
     return <div>This is loading...</div>;
@@ -124,9 +124,6 @@ const MyAccount = () => {
         {selectedRecipe.title !== undefined && (
           <>
             <SavedRecipe recipe={selectedRecipe} />
-            <button onClick={() => saveRecipe(selectedRecipe)}>
-              Save this Recipe
-            </button>
           </>
         )}
       </div>
