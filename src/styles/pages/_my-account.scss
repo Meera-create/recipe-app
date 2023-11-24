@@ -1,0 +1,53 @@
+// styles/pages/_my-account.scss
+
+.saved-recipes {
+    text-align: center;
+  }
+  
+  .recipe-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; // Adjust justify-content to space-between
+  }
+  
+  .recipeItem {
+    padding: 10px; // Adjust the padding to create space
+    margin: 25px; // Add margin to create space between recipes
+    text-align: center;
+    width: calc(20% - 20px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+  
+  
+  
+  
+  
+  
+  
+  .eachRecipe {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  
+    .recipeThumbnail {
+        width: 150px;
+            height: 100px;
+            border-radius: 8px; 
+      }
+  
+    .recipeTitle {
+        white-space: normal; // Change to allow text to wrap
+        overflow: hidden;   // Hide any overflow
+        text-overflow: ellipsis;  // Add ellipsis for overflow
+      }
+    }
+  
+  
+  
+  

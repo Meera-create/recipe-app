@@ -7,6 +7,7 @@ import InstructionsList from './InstructionsList';
 import toast, { Toaster } from 'react-hot-toast';
 
 
+
 const AddRecipeForm = () => {
   const { user } = useContext(Context);
 
@@ -26,6 +27,11 @@ const AddRecipeForm = () => {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [instruction, setInstruction] = useState('');
   const [instructionsList, setInstructionsList] = useState([]);
+
+ 
+  const [savedIngredientNumber, setSavedIngredientNumber] = useState();
+
+
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
@@ -50,7 +56,8 @@ const AddRecipeForm = () => {
     event.preventDefault();
     if (ingredientsList.length > 0) {
       try {
-        setFields({...fields, extendedIngredients: ingredientsList});
+        setFields({ ...fields, extendedIngredients: ingredientsList });
+        
         toast.success('Ingredients saved');    
       } catch (error) {
         toast.error('There was an error saving the ingredients');
@@ -131,10 +138,15 @@ const AddRecipeForm = () => {
           onChange={handleIngredientChange} 
         />
         <button type='submit' onClick={handleAddIngredient}>Add</button>
-        <button type='button' onClick={handleSaveIngredients}>Save Ingredients</button>
-        <br />
-        <br />
-        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
+
+
+        <button type='button' onClick={(e) => {
+          handleSaveIngredients(e)
+          setSavedIngredientNumber(ingredientsList.length-1)
+        }} >Save Ingredients</button>
+
+        {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} savedIngredientNumber={savedIngredientNumber}
+        /></>}
         <label htmlFor='instruction'>Instructions: </label>
         <input 
           id='instruction' 
@@ -146,8 +158,7 @@ const AddRecipeForm = () => {
         />
         <button type='submit' onClick={handleAddInstruction}>Add</button>
         <button type='button' onClick={handleSaveInstructions}>Save Instructions</button>
-        <br />
-        <br />
+        
         {instructionsList.length >= 1 && <><InstructionsList instructionsList={instructionsList} setInstructionsList={setInstructionsList} /></>}
         <label htmlFor='readyInMinutes'>Time to cook (minutes): </label>
         <input 
@@ -157,8 +168,7 @@ const AddRecipeForm = () => {
           value={fields.readyInMinutes} 
           onChange={handleFieldChange}
         />
-        <br />
-        <br />
+     
         <button type='button' onClick={handleAddRecipe}>Add Recipe!</button>
       </form>
     </div>
