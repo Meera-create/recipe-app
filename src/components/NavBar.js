@@ -16,11 +16,19 @@ const NavBar = () => {
               <Link reloadDocument to="/recipe-form">
                 <img alt="logo" src={image} />
               </Link>
-            </div>
+          </div>
+          
             <div className="boxes2">
               <button type="button" className="add-recipe">
                 <NavLink to="add-recipe">Add Recipe</NavLink>
+            </button>
+
+             
+              <button type="button" className="recipe-form-button">
+                <NavLink to="recipe-form">Recipe Finder</NavLink>
               </button>
+             
+           
               <button type="button"className="my-account">
                 <NavLink to="my-account">My Account</NavLink>
               </button>
@@ -37,8 +45,11 @@ const NavBar = () => {
               <Link reloadDocument to="/recipe-form">
                 <img alt="logo" src={image} />
               </Link>
-            </div>
-            <div className="boxes2">
+          </div>
+         
+
+          <div className="boxes2">
+            
               <button type="button" className="login">
                 <NavLink to="login">Login</NavLink>
               </button>
