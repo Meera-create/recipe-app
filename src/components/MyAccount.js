@@ -1,6 +1,4 @@
-// MyAccount component
-
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { Context } from '../Context/AuthContext';
 import { db } from '../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
@@ -13,6 +11,12 @@ const MyAccount = () => {
   const [userRecipes, setUserRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedRecipe, setSelectedRecipe] = useState({});
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [selectedRecipe]);
 
   const getUserFaves = useCallback(async () => {
     const querySnapshot = await getDocs(collection(db, "recipes"));
@@ -123,7 +127,7 @@ const MyAccount = () => {
 
         {selectedRecipe.title !== undefined && (
           <>
-            <SavedRecipe recipe={selectedRecipe} />
+            <SavedRecipe recipe={selectedRecipe} ref={ref}/>
           </>
         )}
       </div>

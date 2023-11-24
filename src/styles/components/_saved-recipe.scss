@@ -1,0 +1,14 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+.clicked-recipe {
+  margin-left: functions.spacing('margin');
+}
+
+.clicked-recipe button {
+  display: 'none';
+  visibility: 'hidden';
+  opacity: 0;
+  position: 'relative'; // Change to 'relative' or remove this line
+}
+

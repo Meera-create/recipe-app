@@ -6,8 +6,6 @@ import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss'
 
-
-
 const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, ref) => {
    
     const { user } = useContext(Context);

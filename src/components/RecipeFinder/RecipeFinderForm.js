@@ -80,7 +80,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
       });
       setSearch(true);
       setRecipes(data.recipes)
-      console.log(data.recipes);
+      // console.log(data.recipes);
       setRandomSearch(true);
       toast.success("Here are your random recipes!");
     } catch (error) {
