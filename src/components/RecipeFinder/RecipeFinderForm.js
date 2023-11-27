@@ -18,6 +18,19 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
  
   const [cuisineType, setCuisineType] = useState("");
 
+  //change button color on hover
+  const changeButtonBackgroundEnter = (e) => {
+    e.target.style.background = '#896773';
+  
+      }
+
+   const changeButtonBackgroundExit = (e) => {
+    e.target.style.background = '#ded693';
+   }
+  
+  
+  
+
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
   };
@@ -151,12 +164,31 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
               {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
             </div>
 
-        
+          {/* <button
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}>
+        Hover over me!
+      </button> */}
+{/*             
+                  <button
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}>
+        Hover over me!
+      </button>
+      {isShown && (
+        <div>
+          I'll appear when you hover over the button.
+        </div>
+      )}
+    </div> */}
           
           </div>
           <div className="random-recipe">
-            <h2>Or try out our RANDOM RECIPE button if you're not sure what to make!</h2>
-          <button type="button" className="buttonform" onClick={getRandomRecipes}>Get Random Recipes</button>
+            <h2 className="random">Or try out our RANDOM RECIPE button if you're not sure what to make!</h2>
+            <button type="button" className="buttonform" onClick={getRandomRecipes}
+              onMouseEnter={changeButtonBackgroundEnter}
+              onMouseLeave={changeButtonBackgroundExit}
+            >Get Random Recipes</button>
           </div>
           </div>
       

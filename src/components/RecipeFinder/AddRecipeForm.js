@@ -5,6 +5,7 @@ import { db } from '../../config/firebase';
 import IngredientsList from './IngredientsList';
 import InstructionsList from './InstructionsList';
 import toast, { Toaster } from 'react-hot-toast';
+import '../../styles/components/_add-recipe-form.scss'
 
 
 
@@ -118,15 +119,21 @@ const AddRecipeForm = () => {
     <div>
       <Toaster />
       <h1>Add a recipe</h1>
-      <form>
+      <h2 className="subhead"> Add your own recipe by giving it a name, adding Ingredients and instruction (don't forget
+        to save them) and adding cooking time. 
+      </h2>
+      <form className='add-own-recipe-form'>
+        <div className="recipe-name entry">
         <label htmlFor='title'>Recipe Name: </label>
         <input 
           id='title' 
           name='title' 
           value={fields.title} 
           onChange={handleFieldChange}
-        />
+          />
+        </div>
         
+        <div className="ingredients-to-add entry">
         <label htmlFor='ingredient'>Ingredients: </label>
         <input  
           id='ingredient' 
@@ -143,7 +150,9 @@ const AddRecipeForm = () => {
           handleSaveIngredients(e)
           setSavedIngredientNumber(ingredientsList.length-1)
         }} >Save Ingredients</button>
+        </div>
 
+        <div className='instructions-to-add entry'>
         {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} savedIngredientNumber={savedIngredientNumber}
         /></>}
         <label htmlFor='instruction'>Instructions: </label>
@@ -160,8 +169,10 @@ const AddRecipeForm = () => {
         <button type='button' onClick={(e) => {
           handleSaveInstructions(e)
           setSavedRecipeInstruction(instructionsList.length-1)
-        }}>Save Instructions</button>
+          }}>Save Instructions</button>
+          </div>
         
+        <div className='time-cook entry'>
         {instructionsList.length >= 1 && <><InstructionsList instructionsList={instructionsList} setInstructionsList={setInstructionsList} savedRecipeInstruction={savedRecipeInstruction} /></>}
         <label htmlFor='readyInMinutes'>Time to cook (minutes): </label>
         <input 
@@ -170,9 +181,12 @@ const AddRecipeForm = () => {
           name='readyInMinutes' 
           value={fields.readyInMinutes} 
           onChange={handleFieldChange}
-        />
+          />
+          </div>
      
-        <button type='button' onClick={handleAddRecipe}>Add Recipe!</button>
+          <div className='entry'>
+          <button type='button' className="add-recipe-button" onClick={handleAddRecipe}>Add Recipe!</button>
+          </div>
       </form>
     </div>
   )
