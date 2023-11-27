@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import Logout from "./Logout";
 import { Context } from "../Context/AuthContext";
 import '../styles/components/_nav-bar.scss'
-import image from '../../src/styles/images/the pantry (1).jpg'
+import fork from '../../src/styles/images/broccoli_fork.jpg';
 
 const NavBar = () => {
   const { user } = useContext(Context);
@@ -14,7 +14,7 @@ const NavBar = () => {
           <div className="buttons">
             <div className="boxes">
               <Link reloadDocument to="/recipe-form">
-                <img alt="logo" src={image} />
+                <img alt="logo" src={fork} />
               </Link>
           </div>
           
@@ -43,7 +43,7 @@ const NavBar = () => {
           <div className="buttons">
             <div className="boxes">
               <Link reloadDocument to="/recipe-form">
-                <img alt="logo" src={image} />
+                <img alt="logo" src={fork} />
               </Link>
           </div>
          
