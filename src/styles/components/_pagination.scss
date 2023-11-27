@@ -1,0 +1,11 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+div.pagination {
+  width: 20%;
+  margin: 6rem auto 2rem;
+}
+
+.page-number {
+  width: fit-content;
+}
