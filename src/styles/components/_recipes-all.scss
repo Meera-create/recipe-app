@@ -12,40 +12,26 @@ ul.recipes {
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap:1rem;
 }
   
-    // .recipes {
-    //   list-style: none;
-    //   padding: 0;
-    //   display: flex;
-    //   flex-wrap: wrap;
-    //   gap: 50px;
-    //   justify-content:space-evenly;
-  
-    // //   .recipeItem {
-    // //     margin: 10px;
-    // //   }
-  
-    //   .eachRecipe {
-    //     background: none;
-    //     border: none;
-    //     cursor: pointer;
-    //     text-align: center;
-  
-    //     .recipeThumbnail {
-    //         width: 150px;
-    //         height: 100px;
-    //         border-radius: 8px; 
-    //       }
-          
-  
-    //     .recipeTitle {
-    //       display: block;
-    //       overflow: hidden;
-    //       text-overflow: ellipsis;
-    //       white-space: nowrap;
-    //     }
-    //   }
-    // }
-  
-  
+
+
+
+  .recipe-each {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+img.recipeThumbnail.recipe-each {
+    width: 12rem;
+    height: 8rem;
+}
+
+// img{

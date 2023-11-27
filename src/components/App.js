@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import Homepage from './HomePage.js';
 import NavBar from './NavBar.js';
 import MyAccount from './MyAccount.js';
-// import SingleRecipe from './RecipeFinder/SingleRecipe';
 import RecipeHomePage from './RecipeFinder/RecipeHomePage.js';
 import Protected from './Protected.js';
 import AddRecipeForm from './RecipeFinder/AddRecipeForm.js';
@@ -25,7 +24,6 @@ const App = () => {
           <Route path="/my-account" element={<Protected><MyAccount /></Protected>} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<CreateAccount />} />
-          {/* <Route path="/single-recipe" element={<SingleRecipe />} /> */}
           <Route path="/add-recipe" element={<Protected><AddRecipeForm /></Protected>} />
           
         </Routes>

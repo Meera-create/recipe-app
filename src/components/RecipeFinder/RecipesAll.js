@@ -55,12 +55,13 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
                 selectRecipe(e, recipe.id);
               }}
             >
-              <img
+            <img
+                className="recipeThumbnail recipe-each"
                 src={recipe.image}
                 alt={recipe.title}
-                className="recipeThumbnail"
+                
               />
-              <span className="recipeTitle">{recipe.title}</span>
+              <span className="recipeTitle recipe-each">{recipe.title}</span>
             </button>
           </li>
         ))}

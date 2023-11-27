@@ -4,6 +4,7 @@ import { db } from '../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import SavedRecipe from './RecipeFinder/SavedRecipe';
 import '../styles/pages/_my-account.scss';
+import fork from '../../src/styles/images/broccoli_fork.jpg'
 
 const MyAccount = () => {
   const { user } = useContext(Context);
@@ -94,6 +95,7 @@ const MyAccount = () => {
                 className='eachRecipe'
                 onClick={() => viewSavedRecipe(recipe)}
               >
+              
                 {recipe.image !== undefined && (
                   <img
                     className="recipeThumbnail"
@@ -101,6 +103,10 @@ const MyAccount = () => {
                     src={recipe.image}
                   />
                 )}
+
+               
+                
+             
                 <span className="recipeTitle">{recipe.title}</span>
               </div>
             </li>
@@ -115,11 +121,11 @@ const MyAccount = () => {
                 className='eachRecipe'
                 onClick={() => viewAddedRecipe(recipe)}
               >
-                {recipe.image !== undefined && (
+                {recipe.image === undefined && (
                   <img
                     className="recipeThumbnail"
                     alt="pic of food"
-                    src={recipe.image}
+                    src={fork}
                   />
                 )}
                 <span className="recipeTitle">{recipe.title}</span>
@@ -139,6 +145,7 @@ const MyAccount = () => {
 };
 
 export default MyAccount;
+
 
 
 
