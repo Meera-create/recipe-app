@@ -8,7 +8,11 @@ import Protected from './Protected.js';
 import AddRecipeForm from './RecipeFinder/AddRecipeForm.js';
 import Login from './Login.js';
 import CreateAccount from './CreateAccount.js';
+
+import Landing from './LandingPage';
+
 import MyAccount from './MyAccount.js'
+
 
 const App = () => {
 
@@ -17,13 +21,15 @@ const App = () => {
       <AuthContext>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Landing/>} />
+          <Route path="/homepage" element={<Homepage />} />
           <Route path="/recipe-form" element={<RecipeHomePage />} />
           <Route path="/my-account" element={<Protected><MyAccount /></Protected>} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<CreateAccount />} />
           {/* <Route path="/single-recipe" element={<SingleRecipe />} /> */}
           <Route path="/add-recipe" element={<Protected><AddRecipeForm /></Protected>} />
+          
         </Routes>
       </AuthContext>
       </div>

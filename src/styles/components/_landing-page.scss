@@ -1,0 +1,33 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
+
+.landing-page {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h1.title-landing{
+    margin-left:0;
+    
+    font-size: 5rem;
+}
+
+
+button.button-enter{
+    margin-left: 0;
+    height:4rem;
+    margin-top: 3rem;
+    
+}
+
+h2.sub{
+    font-size: functions.spacing('small');
+}
+
+a{
+    font-weight:bold ;
+}
