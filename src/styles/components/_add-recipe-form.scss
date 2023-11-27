@@ -1,3 +1,28 @@
+@use '../../styles/abstracts/functions';
+@use '../../styles/abstracts/mixins';
 
+
+form.add-own-recipe-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left:functions.spacing('margin');
+}
+
+
+.entry {
+    margin-top: functions.spacing('medium');
+}
+
+button.add-recipe-button {
+    height: 4rem;
+}
+
+h2{
+    margin-left:functions.spacing('margin')
+}
 
 
