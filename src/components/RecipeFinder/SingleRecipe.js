@@ -50,9 +50,9 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, re
   return (
     <div ref={ref} className="single_recipe">
       <Toaster />
-      <h1>Your recipe</h1>
+      <h1 className='title-main'>Your recipe</h1>
       <div className="clicked-recipe">
-        <h2>{extractedRecipe.title}</h2>
+        <h2 className='recipe-clicked-title'>{extractedRecipe.title}</h2>
         <div className="full-recipe">    
           <div>
             <img className="image" alt="pic of food"  src={extractedRecipe.image} />
