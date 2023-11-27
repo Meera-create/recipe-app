@@ -2,14 +2,18 @@
 
 .saved-recipes {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .recipe-list {
+    width: 50%;
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; // Adjust justify-content to space-between
+    justify-content: space-evenly; // Adjust justify-content to space-evenly
   }
   
   .recipeItem {
@@ -22,13 +26,6 @@
     flex-direction: row;
 }
 
-  
-  
-  
-  
-  
-  
-  
   .eachRecipe {
     background: none;
     border: none;
