@@ -2,9 +2,15 @@
 
 .saved-recipes {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
- .recipe-list {
+
+
+=======
+  .recipe-list {
     list-style: none;
     padding: 0;
     display: flex;
@@ -14,7 +20,7 @@
     width: 64rem;
 }
 
-  
+
   .recipeItem {
     padding: 10px; // Adjust the padding to create space
     margin: 25px; // Add margin to create space between recipes
@@ -25,13 +31,6 @@
     flex-direction: row;
 }
 
-  
-  
-  
-  
-  
-  
-  
   .eachRecipe {
     background: none;
     border: none;

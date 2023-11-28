@@ -12,14 +12,16 @@ form.add-own-recipe-form {
     margin-left:functions.spacing('margin');
 }
 
-
-
 .entry {
     margin-top: functions.spacing('medium');
 }
 
 button.add-recipe-button {
     height: 4rem;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 h2{

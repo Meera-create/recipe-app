@@ -10,6 +10,13 @@
 @use './components/recipe-finder-form';
 @use './components/recipes-all';
 @use './components/single-recipe';
+@use './components/add-recipe-form';
+@use './components/instruction';
+@use './components/landing-page';
+@use './components/pagination';
+@use './components/saved-recipe';
+@use './components/star-rating';
+
 
 @use './pages/home-page';
 @use './pages/my-account';

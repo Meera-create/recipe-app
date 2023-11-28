@@ -43,16 +43,16 @@ const MyAccount = () => {
   }, [setUserRecipes, user.uid]);
 
   useEffect(() => {
-    console.log("faveRecipes length:", faveRecipes.length);
+    // console.log("faveRecipes length:", faveRecipes.length);
   
-    // Log the container width
-    const containerWidth = document.querySelector('.recipe-list')?.offsetWidth;
-    console.log("Container width:", containerWidth);
+    // // Log the container width
+    // const containerWidth = document.querySelector('.recipe-list')?.offsetWidth;
+    // console.log("Container width:", containerWidth);
   
-    // Log the width of each recipe item
-    document.querySelectorAll('.recipeItem').forEach(item => {
-      console.log("Item width:", item.offsetWidth);
-    });
+    // // Log the width of each recipe item
+    // document.querySelectorAll('.recipeItem').forEach(item => {
+    //   console.log("Item width:", item.offsetWidth);
+    // });
   
     getUserFaves();
     getUserRecipes();
