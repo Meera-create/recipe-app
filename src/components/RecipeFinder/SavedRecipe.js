@@ -1,7 +1,7 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import StarRating from '../StarRating';
-import "../../styles/components/_saved-recipe.scss";
+import "../../styles/components/_saved-recipe.scss"
 
 const SavedRecipe = ({ recipe }, ref) => {
   

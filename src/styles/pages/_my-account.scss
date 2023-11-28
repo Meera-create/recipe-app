@@ -7,15 +7,20 @@
     align-items: center;
   }
   
+
+
+=======
   .recipe-list {
-    width: 50%;
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly; // Adjust justify-content to space-evenly
-  }
-  
+    justify-content: center;
+    margin-left: 5rem;
+    width: 64rem;
+}
+
+
   .recipeItem {
     padding: 10px; // Adjust the padding to create space
     margin: 25px; // Add margin to create space between recipes
@@ -52,3 +57,18 @@
     padding: 16px;
 }
 
+h2{
+  font-size: 1.5rem;
+}
+
+img.banner-image {
+    height: 40rem;
+    width: 100%;
+    position: relative;
+    margin-top: -32rem;
+    z-index: -90;
+}
+
+h1.userName {
+    font-size: 3rem;
+}

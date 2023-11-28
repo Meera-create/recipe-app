@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss'
 
-const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, ref) => {
+const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients, missingFood}, ref) => {
    
     const { user } = useContext(Context);
 
@@ -32,25 +32,23 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, re
     extractedRecipe.extendedIngredients.filter(
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
-
+console.log(missedIngredients,)
     let missingFoodItems;
     if (ingredientsList) {
       missingFoodItems = missedIngredients.missedIngredients.map((val) => (
         val.name
     ))
     } else {
-      missingFoodItems = [];
+        missingFoodItems = [];
+        
     }
 
-    // console.log(missedIngredients,'RECIPE')
-    // console.log(missedIngredients.missedIngredients.map((value)=>(value.name)),'MISED INGREDIENTS')
-    // console.log(missingFoodItems,'MISSING FOOD ITEMS ')
-
+  
 
   return (
     <div ref={ref} className="single_recipe">
       <Toaster />
-      <h1 className='title-main'>Your recipe</h1>
+      <h1 className='title-main'>Your recipe...</h1>
       <div className="clicked-recipe">
         <h2 className='recipe-clicked-title'>{extractedRecipe.title}</h2>
         <div className="full-recipe">    
@@ -60,12 +58,17 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients}, re
           <div className="ingredients" >
             <h3>Ingredients:</h3>
             <ul>
-              {unlistedIngredients && unlistedIngredients.map((ingredient,index) => (
-                <li key={index}>{ingredient.original}</li> 
+                          {unlistedIngredients && unlistedIngredients.map((ingredient, index) => (
+                
+                <li key={index} >{ingredient.original}</li> 
               ))}          
+                          {/* <li>Missing ingredients:</li> */}
               {ingredientsList && "missing items:"} {missingFoodItems.map((fooditem, index) => (
-                <li key={index}>{fooditem}</li>
-            ))}
+                  <li key={index}>{fooditem}</li>
+                  
+              ))}
+                         
+                          
               <h3>Instructions:</h3>
               {parse(`${extractedRecipe.instructions}`)}
               <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>

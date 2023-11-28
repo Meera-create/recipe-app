@@ -23,6 +23,7 @@ const RecipeHomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
+ 
   const ref = useRef(null);
 
   useEffect(() => {
@@ -35,11 +36,13 @@ const RecipeHomePage = () => {
 
   return (
     <div className='recipe-homepage'>
-      <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList} 
-        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe} setRandomSearch={setRandomSearch}/>
+      <RecipeFinderForm recipes={recipes} setRecipes={setRecipes} setSearch={setSearch} ingredientsList={ingredientsList}
+        setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe} setRandomSearch={setRandomSearch}
+      />
         {ingredientsList.length >= 1 || randomSearch ? <RecipeAll recipes={currentPosts} search={search} setExtractedRecipe={setExtractedRecipe} setMissedIngredients={setMissedIngredients} missedIngredients={missedIngredients} /> : null}
         {recipes.length > 10 && <Pagination totalPosts={recipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />}
-      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} missedIngredients={missedIngredients} ref={ref} />}
+      {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} missedIngredients={missedIngredients} ref={ref}
+        />}
     </div>
   );
 }

@@ -88,6 +88,7 @@ h2{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap:10rem;
 }
 
 .random-recipe {
@@ -110,4 +111,16 @@ h2{
 
 h2.random {
     width: 12rem;
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+img.choppingBoard {
+    width: 100%;
+    height: 53rem;
+    position: relative;
+    z-index: -90;
+    margin-top: -40rem;
 }
