@@ -13,8 +13,7 @@ const Landing = () => {
             <h2 className="sub">Not a problem!</h2>
             <button className="button-enter"type="button">
                 <NavLink to="homepage">ENTER</NavLink>
-                </button>
-             
+            </button>  
         </div>
     )
 }
