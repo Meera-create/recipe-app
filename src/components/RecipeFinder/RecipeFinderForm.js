@@ -18,6 +18,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
    const [ingredient, setIngredient] = useState(initialState.ingredient);
  
   const [cuisineType, setCuisineType] = useState("");
+  const [cookingTime, setCookingTime] = useState("");
 
   //change button color on hover
   const changeButtonBackgroundEnter = (e) => {
@@ -48,14 +49,18 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     }
   };
 
+  const handleCookingTimeChange = (e) => {
+    setCookingTime(e.target.value);
+  }
+
   const handleCuisineChange = (e) => {
     setCuisineType(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("ingredientsList:", ingredientsList);
-  console.log("cuisineType:", cuisineType);
+  //   console.log("ingredientsList:", ingredientsList);
+  // console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",");
@@ -63,6 +68,10 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 
         if (cuisineType) {
           apiUrl += `&cuisine=${cuisineType}`;
+        }
+
+        if (cookingTime) {
+          apiUrl += `&maxReadyTime=${cookingTime}`;
         }
 
         const { data } = await axios.get(apiUrl, {
@@ -155,9 +164,12 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             <option value="spanish">Spanish</option>
             <option value="thai">Thai</option>
             <option value="vietnamese">Vietnamese</option>
-          
           </select>
-            </div>
+        </div>
+        <div className="cooking-time">
+          <label>Select Maximum Cooking Time (minutes)</label>
+          <input type="number" value={cookingTime} name="cooking-time" onChange={handleCookingTimeChange}/>
+        </div>
             <div className="form-buttons">
         <button className="buttonform" type="submit" onClick={handleAddIngredient}>Add</button>
             <button type="button" className="buttonform" onClick={handleSubmit}>Search</button>
