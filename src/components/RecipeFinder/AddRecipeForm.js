@@ -6,6 +6,7 @@ import IngredientsList from './IngredientsList';
 import InstructionsList from './InstructionsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_add-recipe-form.scss'
+import spoons from '../../styles/images/spoons.jpg'
 
 
 
@@ -118,6 +119,7 @@ const AddRecipeForm = () => {
   return (
     <div>
       <Toaster />
+      <img src={spoons} alt="spoons" className="spoons"/>
       <h1>Add a recipe</h1>
       <h2 className="subhead"> Add your own recipe by giving it a name, adding Ingredients and instruction (don't forget
         to save them) and adding cooking time. 
@@ -143,10 +145,10 @@ const AddRecipeForm = () => {
           value={ingredient} 
           onChange={handleIngredientChange} 
         />
-        <button type='submit' onClick={handleAddIngredient}>Add</button>
+        <button className="button" type='submit' onClick={handleAddIngredient}>Add</button>
 
 
-        <button type='button' onClick={(e) => {
+        <button className="button" type='button' onClick={(e) => {
           handleSaveIngredients(e)
           setSavedIngredientNumber(ingredientsList.length-1)
         }} >Save Ingredients</button>
@@ -164,9 +166,9 @@ const AddRecipeForm = () => {
           value={instruction} 
           onChange={handleInstructionChange} 
         />
-        <button type='submit' onClick={handleAddInstruction}>Add</button>
+        <button className="button" type='submit' onClick={handleAddInstruction}>Add</button>
         
-        <button type='button' onClick={(e) => {
+        <button className="button" type='button' onClick={(e) => {
           handleSaveInstructions(e)
           setSavedRecipeInstruction(instructionsList.length-1)
           }}>Save Instructions</button>

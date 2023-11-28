@@ -4,6 +4,7 @@ import apiConfig from '../../config/apiConfig';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_recipe-finder-form.scss';
+import chopping from '../../styles/images/chopping_board.jpg'
 
 const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredientsList, setExtractedRecipe, setRandomSearch }) => {
   const initialState = {
@@ -33,6 +34,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
+    
   };
 
   const handleAddIngredient = (e) => {
@@ -104,6 +106,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
   return (
     <div className="form">
       <Toaster />
+      <img src={chopping} alt="chopping board" className='choppingBoard'/>
       <h1>Search for a recipe...</h1>
       <h2> Type an ingredient into the search box, click ADD . Add as many as you like, then select SEARCH.
         If no results appear, try removing one of your selected ingredients.

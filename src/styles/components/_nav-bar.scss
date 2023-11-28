@@ -11,6 +11,7 @@ button{
     height:2rem;
     width:7.5rem;
     margin:functions.spacing('xs');
+    font-weight:bold;
     
 }
 
@@ -48,5 +49,10 @@ button.logout-button {
 }
 
 .navbar {
-    background-color: rgb(163, 148, 148);
+    background-color: functions.color('navbar');
+}
+
+img.logo{
+    height:6rem;
+    width:6rem;
 }

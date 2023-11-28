@@ -9,6 +9,7 @@ $color-cream:rgb(248, 248, 205);
 $color-magenta:#7E4E60;
 $color-rose:#896773;
 $color-light-grey:#e7e3f1;
+$color-grey-purple:#dfdbd0;
 
 
 $colors:(
@@ -18,7 +19,8 @@ $colors:(
     'accent-background':$color-dark-green,
     'white':$color-white,
     'black':$color-black,
-    'buttons':$color-light-yellow
+    'buttons':$color-light-yellow,
+    'navbar':$color-grey-purple,
 );
 
 

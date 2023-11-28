@@ -4,7 +4,8 @@ import { db } from '../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import SavedRecipe from './RecipeFinder/SavedRecipe';
 import '../styles/pages/_my-account.scss';
-import fork from '../../src/styles/images/broccoli_fork.jpg'
+import fork from '../../src/styles/images/broccoli_fork.jpg';
+import pineapple from '../../src/styles/images/pineapple-supply-co-Q7PclNhVRI0-unsplash (1).jpg'
 
 const MyAccount = () => {
   const { user } = useContext(Context);
@@ -85,7 +86,9 @@ const MyAccount = () => {
     // console.log(faveRecipes);
     return (
       <div className="saved-recipes">
-        <h1>{`${user.displayName}'s Account`}</h1>
+        <img className="banner-image" src={pineapple} alt="pineapple" />
+        <h1 className='userName'>{`${user.displayName}'s Account`}</h1>
+        
 
         <h2>{faveRecipes.length > 0 && "Your Saved Recipes"}</h2>
         <ul className="recipe-list">

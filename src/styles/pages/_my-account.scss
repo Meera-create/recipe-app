@@ -4,13 +4,16 @@
     text-align: center;
   }
   
-  .recipe-list {
+ .recipe-list {
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; // Adjust justify-content to space-between
-  }
+    justify-content: center;
+    margin-left: 5rem;
+    width: 64rem;
+}
+
   
   .recipeItem {
     padding: 10px; // Adjust the padding to create space
@@ -55,3 +58,18 @@
     padding: 16px;
 }
 
+h2{
+  font-size: 1.5rem;
+}
+
+img.banner-image {
+    height: 40rem;
+    width: 100%;
+    position: relative;
+    margin-top: -32rem;
+    z-index: -90;
+}
+
+h1.userName {
+    font-size: 3rem;
+}
