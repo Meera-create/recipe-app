@@ -43,7 +43,7 @@ const RecipeAll = ({ recipes, search, setExtractedRecipe, cuisineType, setMissed
 
   return (
     <div className="recipesAll">
-      {search && <h1>Here is a list of recipes that match your search!</h1>}
+      {recipes.length > 0 && <h1>Here is a list of recipes that match your search!</h1>}
   
       <ul className="recipes">
         {filteredRecipes.map((recipe) => (

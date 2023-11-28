@@ -40,7 +40,7 @@ const RecipeHomePage = () => {
         setIngredientsList={setIngredientsList} setExtractedRecipe={setExtractedRecipe} setRandomSearch={setRandomSearch}
       />
         {ingredientsList.length >= 1 || randomSearch ? <RecipeAll recipes={currentPosts} search={search} setExtractedRecipe={setExtractedRecipe} setMissedIngredients={setMissedIngredients} missedIngredients={missedIngredients} /> : null}
-        {recipes.length > 10 && <Pagination totalPosts={recipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />}
+        {ingredientsList.length >= 1 && recipes.length > 10 ? <Pagination totalPosts={recipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} /> : null}
       {extractedRecipe.title && <SingleRecipe extractedRecipe={extractedRecipe} missedIngredients={missedIngredients} ingredientsList={ingredientsList} ref={ref}
         />}
     </div>

@@ -233,4 +233,3 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 };
 
 export default RecipeFinderForm;
-
