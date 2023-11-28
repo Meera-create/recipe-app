@@ -90,8 +90,6 @@ const CreateAccount = () => {
             onChange={handleFieldChange} 
           />
           </div>
-        
-
         <div className="box-input">
           <button type="submit">Sign Up</button>
         </div>

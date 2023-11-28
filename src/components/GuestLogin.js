@@ -2,9 +2,6 @@ import {useNavigate} from 'react-router-dom'
 import React from 'react'
 import '../styles/components/_guest-login.scss'
 
-
-
-
 const GuestLogin = () => {
     const navigate = useNavigate();
   

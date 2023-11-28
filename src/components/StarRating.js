@@ -6,15 +6,9 @@ import "../styles/components/_star-rating.scss";
 
 const StarRating = ({ recipe, rating, setRating }) => {
 
-  // console.log(setRating);
   const { user } = useContext(Context);
-
   const [hover, setHover] = useState();
-  // const [rating, setRating] = useState(0);
-
   const recipeRef = doc(db, "recipes", `${recipe.id} - ${user.uid}`);
-
-  // Look into setting the rating in a different area where the onClick for clicking on the saved recipe is rendered
 
   useEffect(() => {
     if (recipe.rating !== undefined) {
@@ -28,7 +22,6 @@ const StarRating = ({ recipe, rating, setRating }) => {
       recipe: {
         rating: starRating
       },
-      // rating: starRating,
       uid: user.uid,
       updatedAt: serverTimestamp()
     }, { merge: true });
@@ -46,7 +39,6 @@ const StarRating = ({ recipe, rating, setRating }) => {
               key={index}
               className={index <= (hover || rating) ? "on" : "off"}
               onClick={() => {
-                // setRating(index);
                 handleClick(index);
               }}
               onMouseEnter={() => setHover(index)}

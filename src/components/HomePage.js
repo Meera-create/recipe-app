@@ -14,9 +14,7 @@ const Homepage = () => {
     } else {
         return(
             <div className="welcome-page">
-
                 <h1 className="title">Welcome to The Pantry</h1>    
-
                 <div className="component1">
                 <h2 className='subheader'>Login if you are new to us</h2>
                     <Login />

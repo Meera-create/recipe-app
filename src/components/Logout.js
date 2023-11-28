@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 import '../styles/components/_logout.scss'
 
-
 const Logout = () => {
   const navigate = useNavigate();
   const [loggedOut, setLoggedOut] = useState(false);

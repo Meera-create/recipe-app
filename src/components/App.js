@@ -11,7 +11,6 @@ import Login from './Login.js';
 import CreateAccount from './CreateAccount.js';
 import Landing from './LandingPage';
 
-
 const App = () => {
 
   return (
@@ -26,7 +25,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<CreateAccount />} />
           <Route path="/add-recipe" element={<Protected><AddRecipeForm /></Protected>} />
-          
         </Routes>
       </AuthContext>
       </div>

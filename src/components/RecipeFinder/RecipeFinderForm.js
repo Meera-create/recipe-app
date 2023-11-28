@@ -21,7 +21,6 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
   const [cuisineType, setCuisineType] = useState("");
   const [cookingTime, setCookingTime] = useState("");
   const [intolerances, setIntolerances] = useState(null);
-  // const [intoleranceList, setIntoleranceList] = useState([]);
 
   //change button color on hover
   const changeButtonBackgroundEnter = (e) => {
@@ -197,26 +196,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
           
             <div className="added-ingredients">
               {ingredientsList.length >= 1 && <><IngredientsList ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} /></>}
-            </div>
-
-          {/* <button
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}>
-        Hover over me!
-      </button> */}
-{/*             
-                  <button
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}>
-        Hover over me!
-      </button>
-      {isShown && (
-        <div>
-          I'll appear when you hover over the button.
-        </div>
-      )}
-    </div> */}
-          
+            </div>          
           </div>
           <div className="random-recipe">
             <h2 className="random">Or try out our RANDOM RECIPE button if you're not sure what to make!</h2>

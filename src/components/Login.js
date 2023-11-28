@@ -28,7 +28,6 @@ const Login = () => {
     setAlert({ message: "", isSuccess: false });
     signInWithEmailAndPassword(auth, fields.email, fields.password)
       .then((userCredential) => {
-        // const { user } = userCredential;
         setAlert({
           message: "You have logged in successfully!",
           isSuccess: true,
@@ -66,7 +65,6 @@ const Login = () => {
           />
           </div>
        
-        
         <div className="box">
         <label htmlFor="password">
           Password: </label>
@@ -78,10 +76,6 @@ const Login = () => {
             onChange={handleFieldChange} 
             />
           </div>
-          
-          
-       
-        
         <div className="box">
           <button type="submit">Login</button>
         </div>

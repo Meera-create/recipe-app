@@ -10,17 +10,11 @@ const RecipeHomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(false);
   const [randomSearch, setRandomSearch] = useState(false);
-
-  // const [recipeID, setRecipeID] = useState("");
-  // const [singleRecipe, setSingleRecipe] = useState([]);
-  // const [index, setIndex] = useState();
-  // const [url, setURL] = useState();
   const [extractedRecipe, setExtractedRecipe] = useState({});
   const [ingredientsList, setIngredientsList] = useState([]);
-
-  // added below:
   const [missedIngredients, setMissedIngredients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const [postsPerPage, setPostsPerPage] = useState(10);
 
  

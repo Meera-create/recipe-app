@@ -6,13 +6,12 @@ import parse from 'html-react-parser';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../styles/components/_single-recipe.scss'
 
-const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients, missingFood}, ref) => {
+const SingleRecipe = ({ extractedRecipe, ingredientsList }, ref) => {
    
     const { user } = useContext(Context);
 
     const saveRecipe = async (e) => {
         e.preventDefault();
-        console.log(extractedRecipe);
         try {
             await setDoc(doc(db, "recipes", `${extractedRecipe.id} - ${user.uid}`), {
                 uid: user.uid,
@@ -33,21 +32,6 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients, mis
     extractedRecipe.extendedIngredients.filter(
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
-console.log(unlistedIngredients)
-    // let missingFoodItems;
-    // if (ingredientsList) {
-    //   missingFoodItems = missedIngredients.missedIngredients.map((val) => (
-    //     val.name
-    // ))
-    // } else {
-    //     missingFoodItems = [];
-        
-    // }
-
-  // console.log(missingFoodItems);
-  // console.log(extractedRecipe.extendedIngredients);
-  // console.log(ingredientsList);
-  console.log(extractedRecipe);
 
   return (
     <div ref={ref} className="single_recipe">
@@ -68,15 +52,9 @@ console.log(unlistedIngredients)
             </ul>
             <h3>Missing Ingredients</h3>
             <ul>
-                          {unlistedIngredients && unlistedIngredients.map((ingredient, index) => (
-                
+                {unlistedIngredients && unlistedIngredients.map((ingredient, index) => (
                 <li key={index} >{ingredient.original}</li> 
               ))}          
-                          {/* <li>Missing ingredients:</li> */}
-              {/* {ingredientsList && "missing items:"} {missingFoodItems.map((fooditem, index) => (
-                  <li key={index}>{fooditem}</li>
-                  
-              ))} */}
             </ul>
             <h3>Instructions:</h3>
               {parse(`${extractedRecipe.instructions}`)}

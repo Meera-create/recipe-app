@@ -42,18 +42,7 @@ const MyAccount = () => {
     });
   }, [setUserRecipes, user.uid]);
 
-  useEffect(() => {
-    // console.log("faveRecipes length:", faveRecipes.length);
-  
-    // // Log the container width
-    // const containerWidth = document.querySelector('.recipe-list')?.offsetWidth;
-    // console.log("Container width:", containerWidth);
-  
-    // // Log the width of each recipe item
-    // document.querySelectorAll('.recipeItem').forEach(item => {
-    //   console.log("Item width:", item.offsetWidth);
-    // });
-  
+  useEffect(() => {  
     getUserFaves();
     getUserRecipes();
     setIsLoading(false);
@@ -67,23 +56,9 @@ const MyAccount = () => {
     setSelectedRecipe(recipe);
   };
 
-  // const saveRecipe = async (recipe) => {
-  //   const docRef = await addDoc(collection(db, "userRecipes"), {
-  //     uid: user.uid,
-  //     recipe,
-  //   });
-
-  //   console.log("Recipe saved with ID: ", docRef.id);
-
-  //   setUserRecipes((prevState) => [...prevState, recipe]);
-  // };
-
   if (isLoading === true) {
     return <div>This is loading...</div>;
-    // console.log("Loading");
   } else {
-    // console.log("Loaded");
-    // console.log(faveRecipes);
     return (
       <div className="saved-recipes">
         <img className="banner-image" src={pineapple} alt="pineapple" />
@@ -98,7 +73,6 @@ const MyAccount = () => {
                 className='eachRecipe'
                 onClick={() => viewSavedRecipe(recipe)}
               >
-              
                 {recipe.image !== undefined && (
                   <img
                     className="recipeThumbnail"
@@ -106,10 +80,6 @@ const MyAccount = () => {
                     src={recipe.image}
                   />
                 )}
-
-               
-                
-             
                 <span className="recipeTitle">{recipe.title}</span>
               </div>
             </li>

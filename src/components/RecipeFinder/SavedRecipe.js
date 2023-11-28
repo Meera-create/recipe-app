@@ -5,7 +5,6 @@ import "../../styles/components/_saved-recipe.scss"
 
 const SavedRecipe = ({ recipe }, ref) => {
   
-  // console.log(setRating);
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
@@ -17,7 +16,6 @@ const SavedRecipe = ({ recipe }, ref) => {
   return (
     <div ref={ref} className="single_recipe">
       <div className="clicked-recipe">
-        {/* <button >Hidden Button</button> */}
         {recipe.image !== undefined && (
           <div>
             <img className="image" alt="pic of food" src={recipe.image} />
