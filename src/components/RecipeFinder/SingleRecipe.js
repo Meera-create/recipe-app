@@ -45,8 +45,9 @@ console.log(unlistedIngredients)
     // }
 
   // console.log(missingFoodItems);
-  console.log(extractedRecipe.extendedIngredients);
-  console.log(ingredientsList);
+  // console.log(extractedRecipe.extendedIngredients);
+  // console.log(ingredientsList);
+  console.log(extractedRecipe);
 
   return (
     <div ref={ref} className="single_recipe">
@@ -79,7 +80,7 @@ console.log(unlistedIngredients)
             </ul>
             <h3>Instructions:</h3>
               {parse(`${extractedRecipe.instructions}`)}
-              <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
+              {extractedRecipe.readyInMinutes > 0 && <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>}
           </div>
         </div>
         <button className="save-button" type="button" onClick={saveRecipe}>
