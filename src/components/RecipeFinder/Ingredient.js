@@ -2,8 +2,6 @@ import React from 'react'
 import '../../styles/components/_ingredient.scss'
 
 const Ingredient = ({ ingredientName, removeIngredient , index, savedIngredientNumber}) => {
-  
-
 
   const determineColor = (index) => {
     if (index <= savedIngredientNumber) {
@@ -11,9 +9,7 @@ const Ingredient = ({ ingredientName, removeIngredient , index, savedIngredientN
     } else {
       return 'color2'
     }
-    
   }
-
 
   return (
     <p>{ingredientName} <button className={`ingredient-remove ${determineColor(index)}`} id='remove-ingredient' style={{ color: 'white' }} onClick={removeIngredient}

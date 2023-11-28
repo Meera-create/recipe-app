@@ -3,6 +3,7 @@ import axios from 'axios';
 import apiConfig from '../../config/apiConfig';
 import IngredientsList from './IngredientsList';
 import toast, { Toaster } from 'react-hot-toast';
+import Select from 'react-select';
 import '../../styles/components/_recipe-finder-form.scss';
 import chopping from '../../styles/images/chopping_board.jpg'
 
@@ -19,23 +20,20 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
  
   const [cuisineType, setCuisineType] = useState("");
   const [cookingTime, setCookingTime] = useState("");
+  const [intolerances, setIntolerances] = useState(null);
+  // const [intoleranceList, setIntoleranceList] = useState([]);
 
   //change button color on hover
   const changeButtonBackgroundEnter = (e) => {
     e.target.style.background = '#896773';
-  
-      }
+  }
 
-   const changeButtonBackgroundExit = (e) => {
+  const changeButtonBackgroundExit = (e) => {
     e.target.style.background = '#ded693';
-   }
+  }
   
-  
-  
-
   const handleIngredientChange = (e) => {
     setIngredient(e.target.value);
-    
   };
 
   const handleAddIngredient = (e) => {
@@ -57,10 +55,15 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
     setCuisineType(e.target.value);
   };
 
+  const intoleranceOptions = [
+    { value: "dairy", label: "Dairy"},
+    { value: "egg", label: "Egg" },
+    { value: "gluten", label: "Gluten" },
+    { value: "grain", label: "Grain"}
+  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  //   console.log("ingredientsList:", ingredientsList);
-  // console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",");
@@ -74,6 +77,12 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
           apiUrl += `&maxReadyTime=${cookingTime}`;
         }
 
+        if (intolerances && intolerances.length > 0) {
+          const intolerancesArray = intolerances.map(intolerance => intolerance.value);
+          const intolerancesList = intolerancesArray.join(",");
+          apiUrl += `&intolerances=${intolerancesList}`;
+        }
+
         const { data } = await axios.get(apiUrl, {
           headers: {
             "x-api-key": apiConfig.apiKey,
@@ -83,7 +92,11 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
         setSearch(true);
         setExtractedRecipe({});
         setSearch(true);
-        toast.success("Recipes found!");
+        if (data.results.length === 0) {
+          toast.error("No recipes found :(");
+        } else {
+          toast.success("Recipes found!");
+        }
       } catch (error) {
         console.log(error);
         setExtractedRecipe({});
@@ -103,8 +116,7 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
         },
       });
       setSearch(true);
-      setRecipes(data.recipes)
-      // console.log(data.recipes);
+      setRecipes(data.recipes);
       setRandomSearch(true);
       toast.success("Here are your random recipes!");
     } catch (error) {
@@ -165,6 +177,14 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
             <option value="thai">Thai</option>
             <option value="vietnamese">Vietnamese</option>
           </select>
+        </div>
+        <div className="intolerances">
+          <label>Select Any Intolerances</label>
+          <Select 
+            defaultValue={intolerances} 
+            onChange={setIntolerances}
+            options={intoleranceOptions}
+            isMulti />
         </div>
         <div className="cooking-time">
           <label>Select Maximum Cooking Time (minutes)</label>
