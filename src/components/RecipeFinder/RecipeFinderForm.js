@@ -54,8 +54,8 @@ const RecipeFinderForm = ({ setRecipes, setSearch, ingredientsList, setIngredien
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("ingredientsList:", ingredientsList);
-  console.log("cuisineType:", cuisineType);
+  //   console.log("ingredientsList:", ingredientsList);
+  // console.log("cuisineType:", cuisineType);
     if (ingredientsList.length > 0) {
       try {
         const ingredientsSearch = ingredientsList.join(",");

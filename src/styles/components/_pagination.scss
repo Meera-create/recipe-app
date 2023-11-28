@@ -2,7 +2,7 @@
 @use '../../styles/abstracts/mixins';
 
 div.pagination {
-  width: 20%;
+  max-width: 20%;
   margin: 6rem auto 2rem;
 }
 

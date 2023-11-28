@@ -27,23 +27,26 @@ const SingleRecipe = ({ extractedRecipe, ingredientsList ,missedIngredients, mis
         }
     };
 
+    console.log(extractedRecipe);
   const unlistedIngredients =
     extractedRecipe.extendedIngredients &&
     extractedRecipe.extendedIngredients.filter(
       (ingredient) => !ingredientsList?.includes(ingredient.original)
     );
-console.log(missedIngredients,)
-    let missingFoodItems;
-    if (ingredientsList) {
-      missingFoodItems = missedIngredients.missedIngredients.map((val) => (
-        val.name
-    ))
-    } else {
-        missingFoodItems = [];
+console.log(unlistedIngredients)
+    // let missingFoodItems;
+    // if (ingredientsList) {
+    //   missingFoodItems = missedIngredients.missedIngredients.map((val) => (
+    //     val.name
+    // ))
+    // } else {
+    //     missingFoodItems = [];
         
-    }
+    // }
 
-  
+  // console.log(missingFoodItems);
+  console.log(extractedRecipe.extendedIngredients);
+  console.log(ingredientsList);
 
   return (
     <div ref={ref} className="single_recipe">
@@ -56,23 +59,27 @@ console.log(missedIngredients,)
             <img className="image" alt="pic of food"  src={extractedRecipe.image} />
           </div>     
           <div className="ingredients" >
-            <h3>Ingredients:</h3>
+            <h3>Your Ingredients:</h3>
+            <ul>
+              {ingredientsList.map((ingredient, index) => {
+                return <li key={index}>{ingredient}</li>
+              })}
+            </ul>
+            <h3>Missing Ingredients</h3>
             <ul>
                           {unlistedIngredients && unlistedIngredients.map((ingredient, index) => (
                 
                 <li key={index} >{ingredient.original}</li> 
               ))}          
                           {/* <li>Missing ingredients:</li> */}
-              {ingredientsList && "missing items:"} {missingFoodItems.map((fooditem, index) => (
+              {/* {ingredientsList && "missing items:"} {missingFoodItems.map((fooditem, index) => (
                   <li key={index}>{fooditem}</li>
                   
-              ))}
-                         
-                          
-              <h3>Instructions:</h3>
+              ))} */}
+            </ul>
+            <h3>Instructions:</h3>
               {parse(`${extractedRecipe.instructions}`)}
               <h3>Time to cook: {extractedRecipe.readyInMinutes} minutes </h3>
-            </ul>
           </div>
         </div>
         <button className="save-button" type="button" onClick={saveRecipe}>
