@@ -1,71 +1,66 @@
-# Getting Started with Create React App
+RECIPE APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This App was part of our final project. We designed and built A Recipe App where you can search recipes from the database and save them to your account. You can also add your own recipes and save those as well. Additionally, there is a random recipe generator if you are unsure what to search.
 
-In the project directory, you can run:
+![image](https://github.com/Meera-create/recipe-app/assets/126895130/086bc845-746b-49e2-ae76-3e4b38d98370)
 
-### `npm start`
+**Cloning the Repo**
+-copy the github link
+-create a folder to store the project
+-in the terminal, run the command **git clone**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Installation**
+To install the correct dependencies, run **npm install**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Running the app**
+TO run the app, run **npm start**.
 
-### `npm test`
+**Tech use**
+React
+React testing library
+CSS
+SASS
+Firebase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Versions**
 
-### `npm run build`
+  -testing-library/react:version 13.4.0
+  -axios: version 1.5.1
+  -firebase: version 10.6.0
+  -react:version 18.2.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**How to use**
+-Select Enter on the home page
+-Either create an account or continue as a guest(you will not be able to save anything to your account)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**To search for recipes**
+![image](https://github.com/Meera-create/recipe-app/assets/126895130/396d719d-98fb-477b-a43c-44d0df0a2796)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Fill in the recipe finder form with ingredients (one or multiple), cooking time(optional), intolerances(optional) and cuisine type(optional). 
+Select search.
 
-### `npm run eject`
+Alternatively, select the random recipe button to generate a list of random recipes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**To add a recipe**
+![image](https://github.com/Meera-create/recipe-app/assets/126895130/7eaa4f7f-1488-4b94-a417-d76c2208bd1b)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Select the add recipe form.
+Add  recipe name, ingredients and select add after each. Once the list is complete, select add ingredients . The repeat for cooking instructions.
+Add time to cook. Then select add recipe.
+The recipe is now stored in your user account.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Your account**
+![image](https://github.com/Meera-create/recipe-app/assets/126895130/c4b341d8-2bb7-4359-ac6d-c2530f782768)
+To view your saved recipes, select my account.
+You can view your saved recipes from your searches at the top, and the added recipes you've written at the bottom.
+To view full recipes, click on icon.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# recipe-app 
+**Additions for future**
+-added more responsive styling with media queries
+-added further styling
+-added ability for user to login using social media
+-removed navbar from landing page
+-allow users to upload an image of their saved recipe
+-allow users to send recipes via links to their friends
